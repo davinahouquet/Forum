@@ -24,9 +24,15 @@ CREATE TABLE IF NOT EXISTS `category` (
   `id_category` int NOT NULL AUTO_INCREMENT,
   `categoryName` varchar(50) COLLATE utf8mb4_bin NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_category`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table forum_dh.category : ~0 rows (environ)
+-- Listage des données de la table forum_dh.category : ~5 rows (environ)
+INSERT INTO `category` (`id_category`, `categoryName`) VALUES
+	(1, 'Sport'),
+	(2, 'Nature'),
+	(3, 'Animaux'),
+	(4, 'Cuisine'),
+	(5, 'Cinéma');
 
 -- Listage de la structure de table forum_dh. post
 CREATE TABLE IF NOT EXISTS `post` (
@@ -65,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `topic` (
 -- Listage de la structure de table forum_dh. user
 CREATE TABLE IF NOT EXISTS `user` (
   `id_user` int NOT NULL AUTO_INCREMENT,
-  `pseudo` varchar(15) COLLATE utf8mb4_bin NOT NULL DEFAULT '0',
+  `username` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '0',
   `role` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '0',
   `email` varchar(25) COLLATE utf8mb4_bin NOT NULL DEFAULT '0',
   `password` varchar(255) COLLATE utf8mb4_bin NOT NULL DEFAULT '0',
