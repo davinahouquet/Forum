@@ -37,3 +37,10 @@ CREATE TABLE post(
    FOREIGN KEY(user_id) REFERENCES user(id_user),
    FOREIGN KEY(topic_id) REFERENCES topic(id_topic)
 );
+
+
+INSERT INTO category(id_category, categoryName) VALUES ('1', 'Sport');
+INSERT INTO category(id_category, categoryName) VALUES ('2', 'Nature');
+INSERT INTO category(id_category, categoryName) VALUES ('3', 'Animaux');
+INSERT INTO category(id_category, categoryName) VALUES ('4', 'Cuisine');
+INSERT INTO category(id_category, categoryName) VALUES ('5', 'Cinéma');

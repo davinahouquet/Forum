@@ -31,9 +31,9 @@
             $categoryManager = new CategoryManager();
  
              return [
-                 "view" => VIEW_DIR."forum/listCategory.php", //Comment le controller interagit avec la vue
+                 "view" => VIEW_DIR."forum/listCategories.php", //Comment le controller interagit avec la vue
                  "data" => [
-                     "category" =>  $categoryManager->findAll(["categoryName", "DESC"]) //la méthode "findAll" est une méthode générique qui provient de l'AbstractController (dont hérite chaque controller de l'application)
+                     "categories" =>  $categoryManager->findAll(["categoryName", "DESC"]) //la méthode "findAll" est une méthode générique qui provient de l'AbstractController (dont hérite chaque controller de l'application)
                  ]
              ];
          
