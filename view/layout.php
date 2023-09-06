@@ -23,7 +23,7 @@
                         <?php
                         if(App\Session::isAdmin()){
                             ?>
-                            <a href="index.php?ctrl=home&action=users" class="nav-item">Voir la liste des gens</a>
+                            <a href="index.php?ctrl=home&action=users" class="nav-item">Users</a>
                           
                             <?php
                         }
@@ -40,8 +40,9 @@
                         }
                         else{
                             ?>
-                            <a href="index.php?ctrl=forum&action=listCategories" class="nav-item">Categories</a>
-                            <a href="index.php?ctrl=forum&action=listTopics" class="nav-item">Topics</a>
+                            <!-- <a href="index.php?ctrl=user&action=listUsers" class="nav-item">Users</a> -->
+                            <a href="index.php?ctrl=category&action=listCategories" class="nav-item">Categories</a>
+                            <a href="index.php?ctrl=topic&action=listTopics" class="nav-item">Topics</a>
                             <a href="./view/security/login.php" class="nav-item">Log in</a>
                             <a href="/security/register.html" class="nav-item">Join us</a>
                         <?php

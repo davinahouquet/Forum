@@ -4,7 +4,7 @@ $topics = $result["data"]['topics']; //récupère les données envoyées par le 
     
 ?>
 
-<h1>liste topics</h1>
+<h1>Topics</h1>
 
 <?php
 foreach($topics as $topic ){
@@ -13,6 +13,3 @@ foreach($topics as $topic ){
     <p><?=$topic->getTitle()?></p>
     <?php
 }
-
-
-  
