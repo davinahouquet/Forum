@@ -9,7 +9,7 @@ $topics = $result["data"]['topics']; //récupère les données envoyées par le 
 foreach($topics as $topic ){
     
     ?>
-    <h1><?=$topic->getName()?></h1>
+    <h2><a href="#"><?=$topic->getName()?></a></h2>
     <p><?=$topic->getTitle()?></p>
     <p><?=$topic->getCreationDate()?></p>
     <?php
