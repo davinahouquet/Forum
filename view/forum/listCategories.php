@@ -10,7 +10,8 @@ $categories = $result["data"]['categories']; //récupère les données envoyées
 
 foreach($categories as $category){
     ?>
-    <p><?=$category->getCategoryName()?></p>
+    <p><a href="index.php?ctrl=topic&action=listTopicsByCategory&id=<?= $category->getId() ?>"><?=$category->getCategoryName()?></a></p>
+    <!-- <p><a href="index.php?ctrl=topic&action=topicByCategory"><?=$category->getCategoryName()?></a></p> -->
     <?php
 }
 

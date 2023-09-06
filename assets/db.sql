@@ -50,5 +50,12 @@ INSERT INTO user(id_user, username, ROLE, email, PASSWORD, registerDate) VALUES 
 INSERT INTO user(id_user, username, ROLE, email, PASSWORD, registerDate) VALUES ('4', 'Mike', 'user', 'mike@hotmail.fr', '123', '2023-09-06');
 INSERT INTO user(id_user, username, ROLE, email, PASSWORD, registerDate) VALUES ('5', 'Heloise', 'user', 'heloise@hotmail.fr', '123', '2023-09-06');
 
-INSERT INTO topic (id_topic, LOCKED, NAME, title, creationDate, category_id, user_id) VALUES ('2', '0', 'Champignons', 'Quels champignons sont les meilleurs?', '2023-09-06', '2', '5');
-INSERT INTO topic (id_topic, LOCKED, NAME, title, creationDate, category_id, user_id) VALUES ('3', '0', 'Menthe', 'La menthe à des fins thérapeutiques', '2023-09-06', '2', '4');
+INSERT INTO topic (id_topic, closed, NAME, title, creationDate, category_id, user_id) VALUES ('2', '0', 'Champignons', 'Quels champignons sont les meilleurs?', '2023-09-06', '2', '5');
+INSERT INTO topic (id_topic, closed, NAME, title, creationDate, category_id, user_id) VALUES ('3', '0', 'Menthe', 'La menthe à des fins thérapeutiques', '2023-09-06', '2', '4');
+INSERT INTO topic (id_topic, closed, NAME, title, creationDate, category_id, user_id) VALUES ('4', '0', 'Dogs', 'Why Chihuahuas are angry?', '2023-09-06', '3', '1');
+INSERT INTO topic (id_topic, closed, NAME, title, creationDate, category_id, user_id) VALUES ('5', '0', 'Films', 'Romantic movies appreciations', '2023-09-06', '5', '2');
+INSERT INTO topic (id_topic, closed, NAME, title, creationDate, category_id, user_id) VALUES ('6', '0', 'Health', 'Sport and healthy lifestyle', '2023-09-06', '1', '3');
+INSERT INTO topic (id_topic, closed, NAME, title, creationDate, category_id, user_id) VALUES ('7', '0', 'Pizza', 'Vegan pizzas trick', '2023-09-06', '4', '4');
+
+-- Afficher les topics d'une catégorie
+SELECT * FROM topic WHERE category_id = 6;

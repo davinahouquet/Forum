@@ -4,12 +4,13 @@ $topics = $result["data"]['topics']; //récupère les données envoyées par le 
     
 ?>
 
-<h1>Topics</h1>
 
 <?php
 foreach($topics as $topic ){
-
+    
     ?>
+    <h1><?=$topic->getName()?></h1>
     <p><?=$topic->getTitle()?></p>
+    <p><?=$topic->getCreationDate()?></p>
     <?php
 }

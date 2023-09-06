@@ -6,10 +6,11 @@
     final class Topic extends Entity{
 
         private $id;
+        private $closed;
+        private $name;
         private $title;
         private $user;
-        private $creationdate;
-        private $closed;
+        private $creationDate;
 
         public function __construct($data){         
             $this->hydrate($data);        
@@ -35,6 +36,44 @@
                 return $this;
         }
 
+        /**
+         * Get the value of closed
+         */ 
+        public function getClosed()
+        {
+                return $this->closed;
+        }
+
+        /**
+         * Set the value of closed
+         *
+         * @return  self
+         */ 
+        public function setClosed($closed)
+        {
+                $this->closed = $closed;
+
+                return $this;
+        }
+/**
+         * Get the value of id
+         */ 
+        public function getName()
+        {
+                return $this->name;
+        }
+
+        /**
+         * Set the value of id
+         *
+         * @return  self
+         */ 
+        public function setName($name)
+        {
+                $this->name = $name;
+
+                return $this;
+        }
         /**
          * Get the value of title
          */ 
@@ -75,33 +114,14 @@
                 return $this;
         }
 
-        public function getCreationdate(){
+        public function getCreationDate(){
             $formattedDate = $this->creationdate->format("d/m/Y, H:i:s");
             return $formattedDate;
         }
 
-        public function setCreationdate($date){
+        public function setCreationDate($date){
             $this->creationdate = new \DateTime($date);
             return $this;
         }
 
-        /**
-         * Get the value of closed
-         */ 
-        public function getClosed()
-        {
-                return $this->closed;
-        }
-
-        /**
-         * Set the value of closed
-         *
-         * @return  self
-         */ 
-        public function setClosed($closed)
-        {
-                $this->closed = $closed;
-
-                return $this;
-        }
     }
