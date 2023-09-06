@@ -55,23 +55,13 @@
             return $this;
         }
 
-        /**
-         * Get the value of id
-         */ 
-        public function getCreationDate()
-        {
-            return $this->content;
+        public function getCreationDate(){
+            $formattedDate = $this->creationDate->format("d/m/Y, H:i:s");
+            return $formattedDate;
         }
-        
-        /**
-         * Set the value of id
-         *
-         * @return  self
-         */ 
-        public function setCreationDate($creationDate)
-        {
-            $this->content = $content;
-            
+
+        public function setCreationDate($date){
+            $this->creationDate = new \DateTime($date);
             return $this;
         }
 

@@ -57,5 +57,11 @@ INSERT INTO topic (id_topic, closed, NAME, title, creationDate, category_id, use
 INSERT INTO topic (id_topic, closed, NAME, title, creationDate, category_id, user_id) VALUES ('6', '0', 'Health', 'Sport and healthy lifestyle', '2023-09-06', '1', '3');
 INSERT INTO topic (id_topic, closed, NAME, title, creationDate, category_id, user_id) VALUES ('7', '0', 'Pizza', 'Vegan pizzas trick', '2023-09-06', '4', '4');
 
+INSERT INTO post (id_post, content, creationDate, user_id, topic_id) VALUES ('1', 'The red ones !!!', '2023-09-06', '1', '2');
+INSERT INTO post (id_post, content, creationDate, user_id, topic_id) VALUES ('2', 'Because they are little', '2023-07-06', '2', '4');
+INSERT INTO post (id_post, content, creationDate, user_id, topic_id) VALUES ('3', 'Stephen King s', '2018-08-06', '1', '3');
+INSERT INTO post (id_post, content, creationDate, user_id, topic_id) VALUES ('4', 'Maybe use mint', '2012-09-06', '7', '5');
+INSERT INTO post (id_post, content, creationDate, user_id, topic_id) VALUES ('5', 'They always end up well', '2023-09-01', '5', '2');
+
 -- Afficher les topics d'une catégorie
 SELECT * FROM topic WHERE category_id = 6;
