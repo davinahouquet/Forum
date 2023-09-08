@@ -44,7 +44,7 @@
                             <a href="index.php?ctrl=category&action=listCategories" class="nav-item">Categories</a>
                             <a href="index.php?ctrl=topic&action=listTopics" class="nav-item">Topics</a>
                             <a href="./view/security/login.php" class="nav-item">Log in</a>
-                            <a href="/security/register.html" class="nav-item">Join us</a>
+                            <a href="index.php?ctrl=security&action=registration" class="nav-item">Join us</a>
                         <?php
                         }
                    

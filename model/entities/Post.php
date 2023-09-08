@@ -79,7 +79,7 @@
 
         public function getTopic(){
     
-            return $this;
+            return $this->topic;
         }
 
         public function setTopic($topic){

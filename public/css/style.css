@@ -73,3 +73,20 @@ h1{
     transition: 0.5s;
 }
 
+/*---------- LIST POSTS ----------*/
+.a-post:hover{
+    color: var(--darkfont);
+}
+
+.posts-container{
+    background-color: rgb(215, 215, 226);
+    margin:5px;
+    transition: 0.5s;
+}
+
+.posts-container:hover{
+    background-color: rgb(183, 183, 196);
+    margin:5px;
+    transition: 0.5s;
+    cursor: pointer;
+}
