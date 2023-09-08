@@ -5,7 +5,7 @@ $topic = $posts->current()->getTopic();
 ?>
 
 <h1><?= $topic->getName()?></h1>
-<h2><?= $topic->getTitle()?></h2>
+<h2><?= $topic->getQuestion()?></h2>
 
 <div class="posts-container">
 <?php
@@ -21,3 +21,12 @@ $topic = $posts->current()->getTopic();
     ?>
 </div>
 <button>+ADD POST</button>
+
+<form enctype="multipart/data" action="index.php?ctrl=post&action=addPost&id=<?=$id?>" method="post">
+
+    <label for="question"></label>
+    <textarea name="content" id="content"></textarea>
+
+    <input type="submit" name="submitPost">
+
+</form>
