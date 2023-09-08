@@ -40,9 +40,7 @@
                         }
                         else{
                             ?>
-                            <!-- <a href="index.php?ctrl=user&action=listUsers" class="nav-item">Users</a> -->
                             <a href="index.php?ctrl=category&action=listCategories" class="nav-item">Categories</a>
-                            <a href="index.php?ctrl=topic&action=listTopics" class="nav-item">Topics</a>
                             <a href="./view/security/login.php" class="nav-item">Log in</a>
                             <a href="index.php?ctrl=security&action=registration" class="nav-item">Join us</a>
                         <?php

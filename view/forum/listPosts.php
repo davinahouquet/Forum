@@ -12,13 +12,12 @@ $topic = $posts->current()->getTopic();
 
     foreach($posts as $post){
         ?>
-            <a href="index.php?ctrl=post&action=detailPost&id=<?= $post->getId() ?>" class="a-post">
-                <p><?=$post->getContent()?></a></p>
-                <p><?=$post->getCreationDate()?></p>
-                <p><?=$post->getUser()->getUsername()?></a></p>
-            </a>
+            <p><?=$post->getContent()?></a></p>
+            <p><?=$post->getCreationDate()?></p>
+            <p><?=$post->getUser()->getUsername()?></a></p>
         <?php
     }
 
     ?>
 </div>
+<button>+ADD POST</button>

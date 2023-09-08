@@ -56,6 +56,7 @@ INSERT INTO topic (id_topic, closed, NAME, title, creationDate, category_id, use
 INSERT INTO topic (id_topic, closed, NAME, title, creationDate, category_id, user_id) VALUES ('5', '0', 'Films', 'Romantic movies appreciations', '2023-09-06', '5', '2');
 INSERT INTO topic (id_topic, closed, NAME, title, creationDate, category_id, user_id) VALUES ('6', '0', 'Health', 'Sport and healthy lifestyle', '2023-09-06', '1', '3');
 INSERT INTO topic (id_topic, closed, NAME, title, creationDate, category_id, user_id) VALUES ('7', '0', 'Pizza', 'Vegan pizzas trick', '2023-09-06', '4', '4');
+INSERT INTO topic (id_topic, closed, NAME, title, creationDate, category_id, user_id) VALUES ('8', '0', 'Test', 'Test', '2023-09-08', '1', '1')
 
 INSERT INTO post (id_post, content, creationDate, user_id, topic_id) VALUES ('1', 'The red ones !!!', '2023-09-06', '1', '2');
 INSERT INTO post (id_post, content, creationDate, user_id, topic_id) VALUES ('2', 'Because they are little', '2023-07-06', '2', '4');

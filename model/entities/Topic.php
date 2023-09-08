@@ -8,7 +8,7 @@
         private $id;
         private $closed;
         private $name;
-        private $title;
+        private $question;
         private $user;
         private $creationDate;
 
@@ -77,9 +77,9 @@
         /**
          * Get the value of title
          */ 
-        public function getTitle()
+        public function getQuestion()
         {
-                return $this->title;
+                return $this->question;
         }
 
         /**
@@ -87,9 +87,9 @@
          *
          * @return  self
          */ 
-        public function setTitle($title)
+        public function setQuestion($question)
         {
-                $this->title = $title;
+                $this->question = $question;
 
                 return $this;
         }
