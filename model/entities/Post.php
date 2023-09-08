@@ -67,7 +67,7 @@
 
         public function getUser(){
     
-            return $this;
+            return $this->user;
         }
 
         public function setUser($user){

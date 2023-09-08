@@ -28,15 +28,5 @@
             );
         }
 
-        public function detailPost($id){
-
-            parent::connect();
-
-            $sql = "SELECT * FROM ".$this->tableName." WHERE topic_id = :id";
-
-            return $this->findOneById(
-                DAO::select($sql, ['id'=>$id]),
-                $this->className
-            );
-        }
+    
     }

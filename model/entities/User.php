@@ -78,7 +78,7 @@
 
         public function getEmail(){
     
-            return $this;
+            return $this->email;
         }
 
         public function setEmail($email){
@@ -90,7 +90,7 @@
 
         public function getPassword(){
     
-            return $this;
+            return $this->password;
         }
 
         public function setPassword($password){
@@ -102,7 +102,7 @@
 
         public function getRegisterDate(){
     
-            return $this;
+            return $this->registerDate;
         }
 
         public function setRegisterDate($registerDate){

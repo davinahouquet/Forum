@@ -15,6 +15,7 @@ $topic = $posts->current()->getTopic();
             <a href="index.php?ctrl=post&action=detailPost&id=<?= $post->getId() ?>" class="a-post">
                 <p><?=$post->getContent()?></a></p>
                 <p><?=$post->getCreationDate()?></p>
+                <p><?=$post->getUser()->getUsername()?></a></p>
             </a>
         <?php
     }

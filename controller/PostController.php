@@ -27,14 +27,14 @@
                 ];
         }
 
-        public function detailPosts($id){
+        public function detailPost($id){
 
             $postManager = new PostManager();
 
             return [
                 "view" => VIEW_DIR."forum/detailPost.php",
                 "data" => [
-                    "post" => $postManager->detailPost($id)
+                    "post" => $postManager->findOneById($id)
                 ]
             ];
         }
