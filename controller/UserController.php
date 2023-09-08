@@ -12,10 +12,5 @@
             
         }
         
-    //     public function signIn(){
-            
-    //         $userManager = new UserManager();
-
-    //         if(isset($_POST["submitR"]))
-    //     }
-    }
+        }
+    
