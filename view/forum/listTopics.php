@@ -11,7 +11,7 @@ $topics = $result["data"]['topics']; //récupère les données envoyées par le 
     <label for="name">Name</label>
     <input type="text" name="name" id="name">
 
-    <label for="question"></label>
+    <label for="question">Question</label>
     <textarea name="question" id="question"></textarea>
 
     <input type="submit" name="submitTopic">

@@ -10,8 +10,12 @@
 
         public function index(){
             
-            $userManager = new UserManager();
-            
         }
+        
+    //     public function signIn(){
+            
+    //         $userManager = new UserManager();
 
+    //         if(isset($_POST["submitR"]))
+    //     }
     }
