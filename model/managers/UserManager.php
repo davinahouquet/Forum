@@ -17,10 +17,23 @@
 
         public function findOneByEmail($email){
 
-            $sql = "SELECT * FROM ".$this->tableName."a WHERE a.email = :email";
+            $sql = "SELECT * FROM ".$this->tableName." WHERE ".$this->tableName.".email = :email";
 
             return $this->getOneOrNullResult(
                 DAO::select($sql, ['email' => $email], false),
+                $this->className
+            );
+        }
+
+        public function findOneByUser($user){
+
+            $sql = "SELECT *
+                    FROM ".$this->tableName." a
+                    WHERE a.username = :username
+                    ";
+
+            return $this->getOneOrNullResult(
+                DAO::select($sql, ['username' => $user], false), 
                 $this->className
             );
         }

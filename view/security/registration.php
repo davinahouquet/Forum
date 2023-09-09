@@ -10,14 +10,16 @@
         <input type="text" name="username" required>
 
         <label for="email">Email</label>
-        <input type="email" required>
+        <input type="email" name="email" required>
 
         <label for="password">Password</label>
         <input type="password" name="password" required>
 
         <label for="confirmPassword">Confirm your password</label>
-        <input type="confirmPassword" name="confirmPassword" required>
+        <input type="password" name="confirmPassword" required>
 
         <input type="submit" name="submitRegistration">
 
     </form>
+
+    <p>Already have an account ? <a href="index.php?ctrl=security&action=login">Log in</a> !</p>
