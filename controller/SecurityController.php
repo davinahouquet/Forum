@@ -93,7 +93,7 @@
                         // var_dump($user);
 
                         //on redirige sur une page d'accueil
-                        header("Location: index.php?ctrl=security&action=index&id=".$user->getId()." ");
+                        header("Location: index.php?ctrl=home&action=index&id=".$user->getId()." ");
                     }
                 }
 
@@ -110,7 +110,7 @@
             if(isset($_SESSION["user"])){
 
                 unset($_SESSION['user']);
-                header("Location: index.php?ctrl=security&action=home");
+                header("Location: index.php?ctrl=home&action=home");
                 
             }
         }
