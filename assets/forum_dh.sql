@@ -16,17 +16,17 @@
 
 
 -- Listage de la structure de la base pour forum_dh
-CREATE DATABASE IF NOT EXISTS `forum_dh` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE IF NOT EXISTS `forum_dh` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `forum_dh`;
 
 -- Listage de la structure de table forum_dh. category
 CREATE TABLE IF NOT EXISTS `category` (
   `id_category` int NOT NULL AUTO_INCREMENT,
-  `categoryName` varchar(50) COLLATE utf8mb4_bin NOT NULL DEFAULT '0',
+  `categoryName` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_category`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table forum_dh.category : ~5 rows (environ)
+-- Listage des données de la table forum_dh.category : ~6 rows (environ)
 INSERT INTO `category` (`id_category`, `categoryName`) VALUES
 	(1, 'Sport'),
 	(2, 'Nature'),
@@ -38,7 +38,7 @@ INSERT INTO `category` (`id_category`, `categoryName`) VALUES
 -- Listage de la structure de table forum_dh. post
 CREATE TABLE IF NOT EXISTS `post` (
   `id_post` int NOT NULL AUTO_INCREMENT,
-  `content` text COLLATE utf8mb4_bin NOT NULL,
+  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `creationDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` int NOT NULL DEFAULT '0',
   `topic_id` int NOT NULL DEFAULT '0',
@@ -47,9 +47,9 @@ CREATE TABLE IF NOT EXISTS `post` (
   KEY `FK__topic_post` (`topic_id`),
   CONSTRAINT `FK__topic_post` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`id_topic`),
   CONSTRAINT `FK__user_post` FOREIGN KEY (`user_id`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table forum_dh.post : ~8 rows (environ)
+-- Listage des données de la table forum_dh.post : ~14 rows (environ)
 INSERT INTO `post` (`id_post`, `content`, `creationDate`, `user_id`, `topic_id`) VALUES
 	(1, 'The red ones !!!', '2023-09-06 00:00:00', 1, 2),
 	(2, 'Because they are little', '2023-07-06 00:00:00', 2, 4),
@@ -64,13 +64,14 @@ INSERT INTO `post` (`id_post`, `content`, `creationDate`, `user_id`, `topic_id`)
 	(11, 'Think about Titanic', '2023-09-08 15:01:32', 1, 5),
 	(12, 'They are demons', '2023-09-08 15:03:44', 1, 4),
 	(13, 'Mushrooms are great', '2023-09-08 15:04:48', 1, 7),
-	(14, 'Use balloons', '2023-09-08 15:06:48', 4, 20);
+	(14, 'Use balloons', '2023-09-08 15:06:48', 4, 20),
+	(15, 'Content\r\n', '2023-09-09 19:09:36', 1, 23);
 
 -- Listage de la structure de table forum_dh. topic
 CREATE TABLE IF NOT EXISTS `topic` (
   `id_topic` int NOT NULL AUTO_INCREMENT,
   `closed` tinyint DEFAULT '0',
-  `name` varchar(50) COLLATE utf8mb4_bin NOT NULL DEFAULT '0',
+  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '0',
   `question` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '0',
   `creationDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `category_id` int NOT NULL DEFAULT '0',
@@ -80,9 +81,9 @@ CREATE TABLE IF NOT EXISTS `topic` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `FK__category` FOREIGN KEY (`category_id`) REFERENCES `category` (`id_category`),
   CONSTRAINT `FK__user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table forum_dh.topic : ~7 rows (environ)
+-- Listage des données de la table forum_dh.topic : ~15 rows (environ)
 INSERT INTO `topic` (`id_topic`, `closed`, `name`, `question`, `creationDate`, `category_id`, `user_id`) VALUES
 	(1, 0, 'Horror', 'Which horror book is the best?', '2023-09-06 00:00:00', 6, 1),
 	(2, 0, 'Mushrooms', 'Which mushrooms are the best?', '2023-09-06 00:00:00', 2, 5),
@@ -98,26 +99,31 @@ INSERT INTO `topic` (`id_topic`, `closed`, `name`, `question`, `creationDate`, `
 	(22, 0, '55', '55', '2023-09-08 15:47:42', 2, 1),
 	(23, 0, 'AA', 'AA', '2023-09-08 15:56:23', 2, 1),
 	(24, 0, 'Cat', 'What does a cat drink ?', '2023-09-08 15:58:19', 3, 1),
-	(25, 0, 'Test', 'Test', '2023-09-08 16:18:13', 6, 1);
+	(25, 0, 'Test', 'Test', '2023-09-08 16:18:13', 6, 1),
+	(26, 0, 'Hello', 'How r u ', '2023-09-09 18:46:34', 2, 1);
 
 -- Listage de la structure de table forum_dh. user
 CREATE TABLE IF NOT EXISTS `user` (
   `id_user` int NOT NULL AUTO_INCREMENT,
   `username` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '0',
   `role` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '0',
-  `email` varchar(25) COLLATE utf8mb4_bin NOT NULL DEFAULT '0',
-  `password` varchar(255) COLLATE utf8mb4_bin NOT NULL DEFAULT '0',
+  `email` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '0',
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '0',
   `registerDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table forum_dh.user : ~5 rows (environ)
+-- Listage des données de la table forum_dh.user : ~9 rows (environ)
 INSERT INTO `user` (`id_user`, `username`, `role`, `email`, `password`, `registerDate`) VALUES
 	(1, 'Samuel', 'user', 'samuel@hotmail.fr', '123', '2023-09-06 00:00:00'),
 	(2, 'Jenna', 'user', 'jenna@hotmail.fr', '123', '2023-09-06 00:00:00'),
 	(3, 'Chloe', 'user', 'chloe@hotmail.fr', '123', '2023-09-06 00:00:00'),
 	(4, 'Mike', 'user', 'mike@hotmail.fr', '123', '2023-09-06 00:00:00'),
-	(5, 'Heloise', 'user', 'heloise@hotmail.fr', '123', '2023-09-06 00:00:00');
+	(5, 'Heloise', 'user', 'heloise@hotmail.fr', '123', '2023-09-06 00:00:00'),
+	(6, 'douvipop', '0', 'davinadorable@outlook.fr', '$2y$10$HtJaZKkUL7/AJUFW0Igx/ehT7QrfR5FW2ZduQK00HEyHq9dIcLnBK', '2023-09-09 21:37:09'),
+	(7, 'test', '0', 'test@test.fr', '$2y$10$BTCypk.LByn6uHMctWibv.NeFjcfO067ji7Mlz4Cm.Ee2e6AEbacq', '2023-09-09 21:40:04'),
+	(8, 'test1', '0', 'test1@hotmail.fr', '$2y$10$XSphaozhPwWOrdysSLETBew2LH6gS2Cq8oVjZ6OSSotlre0hJpzWu', '2023-09-10 11:09:14'),
+	(9, 'test2', '0', 'test2@hotmail.fr', '$2y$10$JiZyIQdb6DGp03HOPa/rhO1raUbmn9.ulsTro9d4NGDXtKDZiZkvi', '2023-09-10 11:51:40');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

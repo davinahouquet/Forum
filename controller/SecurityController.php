@@ -58,4 +58,38 @@
             ];
         }
 
+        public function login(){
+            
+            if(isset($_POST["submitLogin"])){
+
+                //on filtre les champs de saisie
+                $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL, FILTER_VALIDATE_EMAIL);
+                $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+                if($username && $password){
+
+                    $userManager = new UserManager();
+
+                    //on recherche le mot de passe associé à l'adresse mail
+                    if(!$userManager->findOneByEmail($email)){
+
+                            //on vérifie que les 2 passwords correspondent
+                            if($user){
+                                $hash = $user["password"];
+                                if(password_verify($password, $hash)){
+                                    $_SESSION["user"] = $user;
+                                    header("Location: index.php?ctrl=category&action=listCategories");
+                                    // var_dump($_SESSION["user"]);
+                                } else {
+                                    header("Location: index.php?ctrl=security&action=login");
+                                
+                            }
+                        }
+                    }
+                }
+            }
+            return [
+                    "view" => VIEW_DIR."security/login.php", //Interaction avec la vue
+            ];
     }
+}

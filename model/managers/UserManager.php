@@ -27,10 +27,7 @@
 
         public function findOneByUser($user){
 
-            $sql = "SELECT *
-                    FROM ".$this->tableName." a
-                    WHERE a.username = :username
-                    ";
+            $sql = "SELECT * FROM ".$this->tableName." WHERE  ".$this->tableName.".username = :username";
 
             return $this->getOneOrNullResult(
                 DAO::select($sql, ['username' => $user], false), 
