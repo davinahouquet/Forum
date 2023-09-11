@@ -94,17 +94,27 @@
 
                             $msg = "You are connected !";
                             Session::addFlash('success', $msg);
+
+                            $userId = $user->getId();
                             
-                            header("Location: index.php?ctrl=home&action=index&id=".$user->getId()." ");
+                            $this->redirectTo('home', 'index', $userId);
+                            // header("Location: index.php?ctrl=home&action=index&id=".$user->getId()." ");
                         }        
                     } else {
 
                         $msg = "Invalid email or password";
                         Session::addFlash('error', $msg);
 
-                        header("Location: index.php?ctrl=home&action=index");
+                        $this->redirectTo('forum');
+
                     }
                 } 
+                else{
+                
+                $msg = "Invalid email or password";
+                Session::addFlash('error', $msg);
+                $this->redirectTo('forum');
+                }
 
             }
         }
@@ -120,7 +130,9 @@
             unset($_SESSION['user']);
             $msg = "Disconnected";
             Session::addFlash('error', $msg);
-            header("Location: index.php?ctrl=home&action=home");
+
+            $this->redirectTo('forum');
+            // header("Location: index.php?ctrl=home&action=home");
                 
         }
     }
