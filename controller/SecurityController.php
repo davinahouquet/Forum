@@ -90,12 +90,20 @@
 
                         //on stocke l'user en Session (setUser dans App\Session)
                         Session::setUser($user);
-                        // var_dump($user);
-
+                        
+                        $msg = "You are connected !";
+                        Session::addFlash('success', $msg);
                         //on redirige sur une page d'accueil
                         header("Location: index.php?ctrl=home&action=index&id=".$user->getId()." ");
+
+                    } else {
+
+                        $msg = "Invalid email or password";
+                        Session::addFlash('error', $msg);
+
+                        header("Location: index.php?ctrl=home&action=index");
                     }
-                }
+                } 
 
             }
         }
@@ -104,14 +112,15 @@
         ];
     }
 
+    public function logout(){
 
-        public function logout(){
+        if(isset($_SESSION["user"])){
 
-            if(isset($_SESSION["user"])){
-
-                unset($_SESSION['user']);
-                header("Location: index.php?ctrl=home&action=home");
+            unset($_SESSION['user']);
+            $msg = "Disconnected";
+            Session::addFlash('error', $msg);
+            header("Location: index.php?ctrl=home&action=home");
                 
-            }
         }
+    }
 }
