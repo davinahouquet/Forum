@@ -15,7 +15,7 @@
             parent::connect();
         }
 
-        public function retrievePassword(){
+        public function retrievePassword($email){
 
             $sql = "SELECT password FROM ".$this->tableName." WHERE ".$this->tableName.".email = :email";
 
