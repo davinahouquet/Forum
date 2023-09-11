@@ -24,13 +24,20 @@ $topic = $result['data']['topic'];
 
 ?>
 </div>
-<button>+ADD POST</button>
 
-<form enctype="multipart/data" action="index.php?ctrl=post&action=addPost&id=<?=$id?>" method="post">
+<?php
 
-    <label for="content">Content</label>
-    <textarea name="content" id="content"></textarea>
+    if(isset($_SESSION['user'])){
+?>
+    <button>+ADD POST</button>
 
-    <input type="submit" name="submitPost">
+    <form enctype="multipart/data" action="index.php?ctrl=post&action=addPost&id=<?=$id?>" method="post">
 
-</form>
+        <label for="content">Content</label>
+        <textarea name="content" id="content"></textarea>
+
+        <input type="submit" name="submitPost">
+
+    </form>
+<?php
+    }

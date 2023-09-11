@@ -78,11 +78,10 @@
                 // var_dump($password); die;
 
                 if($dbPass){
-                        // var_dump($dbPass); die;
 
-                        //récupération du mot de
+                    //récupération du mot de
                     $hash = $dbPass->getPassword();
-                        //on recherche l'utilisateur rattaché à l'adresse mail
+                    //on recherche l'utilisateur rattaché à l'adresse mail
                     $user = $userManager->findOneByEmail($email);
 
                     //on vérifie que les mots de passe concordent (password_verify)
@@ -91,11 +90,13 @@
                         //on stocke l'user en Session (setUser dans App\Session)
                         Session::setUser($user);
                         
-                        $msg = "You are connected !";
-                        Session::addFlash('success', $msg);
-                        //on redirige sur une page d'accueil
-                        header("Location: index.php?ctrl=home&action=index&id=".$user->getId()." ");
+                        if(isset($_SESSION["user"])){
 
+                            $msg = "You are connected !";
+                            Session::addFlash('success', $msg);
+                            
+                            header("Location: index.php?ctrl=home&action=index&id=".$user->getId()." ");
+                        }        
                     } else {
 
                         $msg = "Invalid email or password";

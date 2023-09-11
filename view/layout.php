@@ -31,6 +31,7 @@
                         ?>
                     </div>
                     <div id="nav-right">
+                    <a href="index.php?ctrl=category&action=listCategories" class="nav-item">Categories</a>
                     <?php
                         
                         if(App\Session::getUser()){
@@ -41,8 +42,8 @@
                         }
                         else{
                             ?>
-                            <a href="index.php?ctrl=category&action=listCategories" class="nav-item">Categories</a>
-                            <a href="index.php?ctrl=security&action=login" class="nav-item">Log in</a>
+                            <!-- <a href="index.php?ctrl=category&action=listCategories" class="nav-item">Categories</a> -->
+                            <!-- <a href="index.php?ctrl=security&action=login" class="nav-item">Log in</a> -->
                             <a href="index.php?ctrl=security&action=registration" class="nav-item">Join us</a>
                         <?php
                         }
