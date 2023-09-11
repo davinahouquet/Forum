@@ -76,6 +76,17 @@
             return $this;
         }
 
+        public function hasRole($role){
+            if( $this->role == $role){
+                return true;
+
+        } else {
+
+                return false;
+
+        };
+        }
+
         public function getEmail(){
     
             return $this->email;
@@ -110,5 +121,9 @@
             $this->registerDate = $registerDate;
 
             return $this;
+        }
+
+        public function __toString(){
+            return $this->username;
         }
     }

@@ -15,6 +15,17 @@
             parent::connect();
         }
 
+        public function retrievePassword(){
+
+            $sql = "SELECT password FROM ".$this->tableName." WHERE ".$this->tableName.".email = :email";
+
+            return $this->getOneOrNullResult(
+                DAO::select($sql, ['email' => $email], false),
+                $this->className
+            );
+
+        }
+
         public function findOneByEmail($email){
 
             $sql = "SELECT * FROM ".$this->tableName." WHERE ".$this->tableName.".email = :email";

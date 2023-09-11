@@ -19,12 +19,13 @@
             <header>
                 <nav>
                     <div id="nav-left">
-                        <a href="/" class="nav-item">Accueil</a>
+                        <a href="index.php?ctrl=home&action=index" class="nav-item">Accueil</a>
                         <?php
+                        // var_dump($_SESSION["user"]);
+                        
                         if(App\Session::isAdmin()){
                             ?>
                             <a href="index.php?ctrl=home&action=users" class="nav-item">Users</a>
-                          
                             <?php
                         }
                         ?>

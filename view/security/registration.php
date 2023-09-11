@@ -23,5 +23,3 @@
     </form>
 
     <p>Already have an account ? <a href="index.php?ctrl=security&action=login">Log in</a> !</p>
-
-    <?php var_dump($_SESSION["user"]);

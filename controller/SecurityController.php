@@ -48,6 +48,9 @@
 
                                 //on redirige vers le formulaire de login dans la foulée
                                 header("Location: index.php?ctrl=security&action=login");
+                            } else {
+                                echo "Invalid password";
+                                header("Location: index.php?ctrl=security&action=registration");
                             }
                         }
                     }
@@ -58,38 +61,98 @@
             ];
         }
 
-        public function login(){
+    //     public function login(){
             
-            if(isset($_POST["submitLogin"])){
+    //         if(isset($_POST["submitLogin"])){
 
-                //on filtre les champs de saisie
-                $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL, FILTER_VALIDATE_EMAIL);
-                $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    //             //on filtre les champs de saisie
+    //             $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL, FILTER_VALIDATE_EMAIL);
+    //             $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-                if($username && $password){
+    //             if($email && $password){
 
-                    $userManager = new UserManager();
+    //                 $userManager = new UserManager();
 
-                    //on recherche le mot de passe associé à l'adresse mail
-                    if(!$userManager->findOneByEmail($email)){
+    //                 //on recherche le mot de passe associé à l'adresse mail
+    //                 if(!$userManager->findOneByEmail($email)){
+                    
+    //                         //on vérifie que les 2 passwords correspondent
+    //                         if($user){
 
-                            //on vérifie que les 2 passwords correspondent
-                            if($user){
-                                $hash = $user["password"];
-                                if(password_verify($password, $hash)){
-                                    $_SESSION["user"] = $user;
-                                    header("Location: index.php?ctrl=category&action=listCategories");
-                                    // var_dump($_SESSION["user"]);
-                                } else {
-                                    header("Location: index.php?ctrl=security&action=login");
-                                
-                            }
-                        }
+    //                             $hash = $user["password"];
+
+    //                             if(password_verify($password, $hash)){
+    //                                 $_SESSION["user"] = $user;
+    //                                 header("Location: index.php?ctrl=home&action=index"); exit;
+    //                                 var_dump($_SESSION["user"]);
+    //                             } else {
+    //                                 echo "error";
+    //                                 header("Location: index.php?ctrl=security&action=login"); exit;
+    //                             }
+    //                         } else {
+    //                             echo "error";
+    //                             header("Location: index.php?ctrl=security&action=login"); exit;
+    //                         }
+    //                 }
+
+    //             }
+    //         }
+    //         return [
+    //                 "view" => VIEW_DIR."security/login.php", //Interaction avec la vue
+    //         ];
+    // }
+    
+
+    public function login(){
+            
+        $userManager = new UserManager();
+
+        if(isset($_POST["submitLogin"])){
+
+            //on filtre les champs de saisie
+            $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL, FILTER_VALIDATE_EMAIL);
+            $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            if($email && $password){
+            //on recherche le mot de passe associé à l'adresse mail
+            $dbPass = $userManager->retrievePassword($email);
+// var_dump($email); die;
+// var_dump($password); die;
+
+if($dbPass){
+                    var_dump($dbPass); die;
+
+                    //récupération du mot de
+                    $hash = $dbPass->getPassword();
+                    //on recherche l'utilisateur rattaché à l'adresse mail
+                    $user = $userManager->findOneByEmail($email);
+
+                    //on vérifie que les mots de passe concordent (password_verify)
+                    if(password_verify($password, $hash)){
+
+                        //on stocke l'user en Session (setUser dans App\Session)
+                        Session::setUser($user);
+                        var_dump($user);
+
+                        //on redirige sur une page d'accueil
+                        header("Location: index.php?ctrl=security&action=index");
                     }
                 }
+
             }
-            return [
-                    "view" => VIEW_DIR."security/login.php", //Interaction avec la vue
-            ];
+        }
+        return [
+                "view" => VIEW_DIR."security/login.php", //Interaction avec la vue
+        ];
     }
+
+
+        // public function logout(){
+
+        //     if(isset($_SESSION["user"])){
+
+        //     }
+
+
+        // }
 }
