@@ -28,6 +28,19 @@
             );
         }
 
+
+        // public function listTopicsHome(){
+
+        //     parent::connect();
+
+        //     $sql = "SELECT * from".$this->tableName." ORDER BY creationDate DESC";
+
+        //     return $this->getMultipleResults(
+        //         DAO::select($sql),
+        //         $this->className
+        //     );
+        // }
+        
         // public function addTopic(){
 
         //     parent::connect();

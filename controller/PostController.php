@@ -52,6 +52,7 @@
                 if($content){
 
                     $postManager->add(["content" => $content, "topic_id" => $id, "user_id" => 1]);
+                    // $postManager->add(["content" => $content, "topic_id" => $id, "user_id" => $this->getUser()->getId()]);
                     header("Location: index.php?ctrl=post&action=listPostsByTopics&id=$id");
 
                 }

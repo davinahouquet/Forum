@@ -48,4 +48,18 @@
             $nb++;
             include(VIEW_DIR."ajax.php");
         }*/
+
+        public function listTopicHome(){
+
+            $manager = new TopicManager();
+
+            $topics = $manager->findAll(['creationDate', 'DESC']);
+
+            return [
+                "view" => VIEW_DIR."home.php",
+                "data" => [
+                    "topics" => $topics
+                ]
+            ];
+        }
     }

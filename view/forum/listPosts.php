@@ -18,6 +18,10 @@ $topic = $result['data']['topic'];
              <p><?=$post->getContent()?></a></p>
              <p><?=$post->getCreationDate()?></p>
              <p><?=$post->getUser()->getUsername()?></a></p>
+             <?php
+                if(isset($_SESSION['user'])){
+            ?>
+                <button>Delete</button>
          <?php
      }
 }
@@ -41,3 +45,4 @@ $topic = $result['data']['topic'];
     </form>
 <?php
     }
+ }

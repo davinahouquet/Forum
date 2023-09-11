@@ -14,5 +14,19 @@ foreach($categories as $category){
     <?php
 }
 
+    if(isset($_SESSION['user']) && $_SESSION['user'] == 'ROLE_ADMIN'){
+?>
+    <button>+ADD CATEGORY</button>
+
+    <form enctype="multipart/data" action="index.php?ctrl=post&action=addCategory&id=<?=$id?>" method="post">
+
+        <label for="category">Category</label>
+        <input name="category">
+
+        <input type="submit" name="submitCategory">
+
+    </form>
+<?php
+    }
 
   

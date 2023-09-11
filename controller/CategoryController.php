@@ -25,4 +25,30 @@
             ];   
         }
 
+        public function addCategory(){
+
+            $categoryManager = new CategoryManager();
+
+            // if($_SESSION['user'] == 'admin'){
+                // if($this->isAdmin()){
+            if($_SESSION['user']->isAdmin()){
+
+                if(isset($_POST['submitCategory'])){
+                    
+                    $category = filter_input(INPUT_POST, "category", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                    
+                    if($category){
+                        
+                        $categoryManager->add(["categoryName" => $category]);
+
+                        $this->redirectTo("topic", "listTopicsByCategory", $id);
+                        // header("Location: index.php?ctrl=topic&action=listTopicsByCategory&id=$id");
+                    }
+                    return [
+                        "view" => VIEW_DIR. "forum/listCategory.php"
+                    ];
+                }
+
+            }
+        }
     }

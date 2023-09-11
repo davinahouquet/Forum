@@ -46,6 +46,9 @@
                                 //on ajoute l'user en bdd (pas besoin d'id car autoincrement)
                                 $userManager->add(["username" => $username, "email" =>$email, "password" => $passwordHash]);
 
+                                $msg = "Session created !";
+                                Session::addFlash('success', $msg);
+
                                 //on redirige vers le formulaire de login dans la foulée
                                 header("Location: index.php?ctrl=security&action=login");
                             } else {
@@ -97,7 +100,7 @@
 
                             $userId = $user->getId();
                             
-                            $this->redirectTo('home', 'index', $userId);
+                            $this->redirectTo('forum', $userId);
                             // header("Location: index.php?ctrl=home&action=index&id=".$user->getId()." ");
                         }        
                     } else {
