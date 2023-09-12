@@ -14,7 +14,7 @@ $topics = $result["data"]['topics'];
             <input type="text" name="name" id="name" value="<?=$topics->getName()?>">
 
             <label for="question">Question</label>
-            <textarea name="question" id="question" placeholder="<?=$topics->getQuestion()?>"></textarea>
+            <textarea name="question" id="question"><?= $topics->getQuestion() ?></textarea>
 
             <input type="submit" name="updateTopic">
             

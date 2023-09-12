@@ -28,7 +28,19 @@
             );
         }
 
-        
+        public function updatePost($id, $content){
+            // var_dump($id);
+            // var_dump($content); die;
+            $sql = "UPDATE post
+                    SET content = :content
+                    WHERE id_post = :id";
+                    
+            DAO::select($sql, [
+                'content'=>$content,
+                'id'=>$id,
+            ]);
+            
+        }
 
     
     }

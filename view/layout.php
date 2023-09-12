@@ -20,6 +20,7 @@
                 <nav>
                     <div id="nav-left">
                         <a href="index.php?ctrl=home&action=index" class="nav-item">Accueil</a>
+                        <!-- <a href="index.php?ctrl=home&action=listTopicHome" class="nav-item">Accueil</a> -->
                         <?php
                         // var_dump($_SESSION["user"]);
                         

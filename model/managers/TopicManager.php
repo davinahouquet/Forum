@@ -28,7 +28,7 @@
             );
         }
 
-        public function updateTopic($id){
+        public function updateTopic($id, $name, $question){
 
             parent::connect();
 
@@ -36,22 +36,26 @@
                     SET name = :name, question = :question
                     WHERE id_topic = :id";
 
-                DAO::update($sql, ['id'=>$id]);
+                DAO::update($sql, [
+                    'id'=>$id,
+                    'name'=>$name,
+                    'question'=> $question,
+                ]);
         }
 
      
 
-        // public function listTopicsHome(){
+        public function listTopicsHome(){
 
-        //     parent::connect();
+            parent::connect();
 
-        //     $sql = "SELECT * from".$this->tableName." ORDER BY creationDate DESC";
+            $sql = "SELECT * from".$this->tableName." ORDER BY creationDate DESC";
 
-        //     return $this->getMultipleResults(
-        //         DAO::select($sql),
-        //         $this->className
-        //     );
-        // }
+            return $this->getMultipleResults(
+                DAO::select($sql),
+                $this->className
+            );
+        }
         
         // public function addTopic(){
 

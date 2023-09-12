@@ -52,28 +52,35 @@
             }
         }
 
-        // public function updatePost($id){
-
-        //     $postManager = new PostManager();
-
-        //     if(isset($_POST['submitUpdatePost'])){
+        public function updatePost($id){
+            $postManager = new PostManager();
+            // $topicManager = new TopicManager();
+            
+            if(isset($_POST['submitUpdatePost'])){
+                // var_dump($_POST); die;
+                // var_dump($content);
                 
-        //         $content = filter_input(INPUT_POST, "content", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $content = filter_input(INPUT_POST, "content", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 
-        //         if($content){
+                if($content){
 
-        //             $postManager->update(["content" => $content, "topic_id" => $id, "user_id" => 11]);
-        //             // $postManager->add(["content" => $content, "topic_id" => $id, "user_id" => $this->getUser()->getId()]);
-        //             header("Location: index.php?ctrl=post&action=listPostsByTopics&id=$id");
+                    $postManager->updatePost($id, $content);
+                    // $postManager->add(["content" => $content, "topic_id" => $id, "user_id" => $this->getUser()->getId()]);
+                    $this->redirectTo('forum');
+                    // header("Location: index.php?ctrl=post&action=listPostsByTopics&id=$id");
 
-        //         }
+                }
+            }
+                
+                return [
+                    "view" => VIEW_DIR."forum/updatePost.php", //Interaction avec la vue
+                    "data" => [
+                        "post" => $postManager->findOneById($id),
+                        // "topic" => $topicManager->findOneById($id)
+                    ]
+            ];
 
-        //         return [
-        //             "view" => VIEW_DIR. "forum/listPosts.php"
-        //         ];
-
-        //     }
-        // }
+        }
 
         public function deletePost($id){
 

@@ -16,20 +16,15 @@
         
         public function listTopicsByCategory($id){
             
-
             if (isset($_POST['submitTopic'])){
-
                 header("Location: index.php?ctrl=topic&action=addTopic");
                 //Rediriger si une action est effectuée
             }
-
             //Donc on ira pas jusqu'au contenu en dessous
-
             $topicManager = new TopicManager();
-
                 return [
                         "view" => VIEW_DIR."forum/listTopics.php", //Interaction avec la vue
-                         "data" => [
+                            "data" => [
                             "topics" => $topicManager->topicByCategory($id)
                         ]
                 ];
@@ -38,7 +33,6 @@
         public function addTopic($id){
 
             $topicManager = new TopicManager();
-
             if(isset($_SESSION['user'])){
                 
                 if(isset($_POST['submitTopic'])){
@@ -56,7 +50,6 @@
                         "view" => VIEW_DIR. "forum/listTopics.php"
                     ];
                 }
-
             }
             
         }
@@ -64,16 +57,13 @@
         public function updateTopic($id){
 
             $topicManager = new TopicManager();
-
             if(isset($_POST['updateTopic'])){
-
                 $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $question = filter_input(INPUT_POST, "question", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-// var_dump($_POST);die;
+                // var_dump($_POST);die;
                 if($name && $question){
-
-                    $topicManager->updateTopic($id);
-// var_dump($_POST);die;
+                    // var_dump($_POST);die;
+                    $topicManager->updateTopic($id, $name, $question);
                     $this->redirectTo('forum');
                 } else {
                     echo "error";
@@ -91,10 +81,7 @@
         public function deleteTopic($id){
 
             $topicManager = new TopicManager();
-
             $topicManager->delete($id);
-
             $this->redirectTo('forum');
         }
-        
     }

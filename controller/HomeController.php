@@ -14,19 +14,26 @@
 
         public function index(){
             
-           
-                return [
-                    "view" => VIEW_DIR."home.php"
-                ];
-            }
+            $topicManager = new TopicManager();
+
+            // $topics = $topicManager->findAll(['creationDate', 'DESC']);
+
+            return [
+                "view" => VIEW_DIR."home.php",
+                "data" => [
+                    "topics" => $topicManager->findAll(['creationDate', 'DESC'])
+                ]
+            ];
+        }
             
         
    
         public function users(){
             $this->restrictTo("ROLE_USER");
 
-            $manager = new UserManager();
-            $users = $manager->findAll(['registerdate', 'DESC']);
+            $userManager = new UserManager();
+            
+            $users =  $userManager->findAll(['registerate', 'DESC']);
 
             return [
                 "view" => VIEW_DIR."security/users.php",
@@ -49,17 +56,4 @@
             include(VIEW_DIR."ajax.php");
         }*/
 
-        public function listTopicHome(){
-
-            $manager = new TopicManager();
-
-            $topics = $manager->findAll(['creationDate', 'DESC']);
-
-            return [
-                "view" => VIEW_DIR."home.php",
-                "data" => [
-                    "topics" => $topics
-                ]
-            ];
-        }
     }

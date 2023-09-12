@@ -28,12 +28,13 @@
             <p><?=$topic->getCreationDate()?></p>
 
             <?php
-                // if($_SESSION['user'] == $topic->getUser()){
-                // if(isset($_SESSION['user'])){
+
+            // if(isset($_SESSION['user']['id]) and $_SESSION['user'] == $topic->getUser()->getId()){
+            
             ?>
                 <button><a href="index.php?ctrl=topic&action=updateTopic&id=<?=  $topic->getId() ?>">Update</a></button>
                 <button><a href="index.php?ctrl=topic&action=deleteTopic&id=<?=  $topic->getId() ?>">Delete</a></button>
             <?php
-
+            // }
         // }
 }
