@@ -51,7 +51,7 @@
                 
                 if($content){
 
-                    $postManager->add(["content" => $content, "topic_id" => $id, "user_id" => 1]);
+                    $postManager->add(["content" => $content, "topic_id" => $id, "user_id" => 11]);
                     // $postManager->add(["content" => $content, "topic_id" => $id, "user_id" => $this->getUser()->getId()]);
                     header("Location: index.php?ctrl=post&action=listPostsByTopics&id=$id");
 
@@ -63,4 +63,27 @@
 
             }
         }
+
+        // public function updatePost($id){
+
+        //     $postManager = new PostManager();
+
+        //     if(isset($_POST['submitUpdatePost'])){
+                
+        //         $content = filter_input(INPUT_POST, "content", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                
+        //         if($content){
+
+        //             $postManager->update(["content" => $content, "topic_id" => $id, "user_id" => 11]);
+        //             // $postManager->add(["content" => $content, "topic_id" => $id, "user_id" => $this->getUser()->getId()]);
+        //             header("Location: index.php?ctrl=post&action=listPostsByTopics&id=$id");
+
+        //         }
+
+        //         return [
+        //             "view" => VIEW_DIR. "forum/listPosts.php"
+        //         ];
+
+        //     }
+        // }
     }

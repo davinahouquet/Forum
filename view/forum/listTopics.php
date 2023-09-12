@@ -1,9 +1,10 @@
 <?php
     $topics = $result["data"]['topics'];
 
+    //Formulaire d'ajout de topic
     if(isset($_SESSION['user'])){
 ?>
-        <button><a href="index.php?ctrl=topic&action=addTopic">+ ADD TOPIC</a></button>
+        <h3><a href="index.php?ctrl=topic&action=addTopic">+ ADD TOPIC</a></h3>
 
         <form action="index.php?ctrl=topic&action=addTopic&id=<?= $id ?>" method="post" enctype="multipart/form-data">
 
@@ -19,7 +20,7 @@
 
     <?php
     }
-        foreach($topics as $topic ){
+        foreach($topics as $topic){
             
             ?>
             <h2><a href="index.php?ctrl=post&action=listPostsByTopics&id=<?= $topic->getId() ?>"><?=$topic->getName()?></a></h2>
@@ -27,10 +28,12 @@
             <p><?=$topic->getCreationDate()?></p>
 
             <?php
-                if(isset($_SESSION['user'])){
+                // if($_SESSION['user'] == $topic->getUser()){
+                // if(isset($_SESSION['user'])){
             ?>
-                <button>Delete</button>
+                <button><a href="index.php?ctrl=topic&action=updateTopic&id=<?=  $topic->getId() ?>">Update</a></button>
+                <button><a href="index.php?ctrl=topic&action=deleteTopic&id=<?=  $topic->getId() ?>">Delete</a></button>
             <?php
 
-        }
+        // }
 }

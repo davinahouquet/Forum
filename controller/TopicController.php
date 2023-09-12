@@ -48,7 +48,7 @@
                     
                     if($name && $question){
                         // $topicManager->add(["id_topic" => $id, "closed" => $closed, "NAME" => $name, "title" =>$title, "creationDate" => $creationDate, "category_id" => $category, "user_id" => $user()]);
-                        $topicManager->add(["name" => $name, "question" =>$question, "category_id" => $id, "user_id" => 1]);
+                        $topicManager->add(["name" => $name, "question" =>$question, "category_id" => $id, "user_id" => 11]);
                         header("Location: index.php?ctrl=topic&action=listTopicsByCategory&id=$id");
                     }
                         // Pas besoin de l'id_topic puisque c'est en auto increment dans la base de données, l'id en cours est celui de la categorie, creationDate a déjà une valeur par défaut
@@ -60,4 +60,52 @@
             }
             
         }
+
+        public function updateTopic($id){
+
+            $topicManager = new TopicManager();
+
+            if(isset($_POST['updateTopic'])){
+
+                $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $question = filter_input(INPUT_POST, "question", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+                if($name && $question){
+
+                    $topicManager->updateTopic($id);
+
+                    // var_dump($_POST['updateTopic']);die;
+                    $this->redirectTo('forum');
+                } else {
+                    $this->redirectTo('forum');
+                }
+            }
+                return [
+                        "view" => VIEW_DIR."forum/updateTopic.php", //Interaction avec la vue
+                        "data" => [
+                            "topics" => $topicManager->findOneById($id)
+                        ]
+                ];
+        }
+
+        // public function deleteTopic($id){
+
+        //     $topicManager = new TopicManager();
+
+        //     $topic = $topicManager->deleteTopicByUser($id);
+
+        //     //Sécuriser pour qu'un user ne puisse pas supprimer les posts d'autrui
+        //     $userId = $topic->getUser()->getId();
+        //     $userTopic = $topic['user'];
+
+        //     if($userId == $userTopic){
+
+        //         $topicManager->delete($id);
+        //         $this->redirectTo('topic', 'listTopicsByCategory');
+        //     } else {
+
+        //         $this->redirectTo('topic', 'listTopicByCategory');
+        //     }
+
+        // }
     }

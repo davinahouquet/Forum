@@ -28,6 +28,28 @@
             );
         }
 
+        public function updateTopic($id){
+
+            parent::connect();
+
+            $sql = "UPDATE topic 
+                    SET name = :name, question = :question
+                    WHERE id_topic = :id";
+
+                DAO::update($sql, ['id'=>$id]);
+        }
+
+        // public function deleteTopicByUser($id){
+
+        //     parent::connect();
+
+        //     $sql = "SELECT * from topic WHERE user_id = :id";
+
+        //     return $this->getMultipleResults(
+        //         DAO::select($sql, ['id'=>$id]),
+        //         $this->className
+        //     );
+        // }
 
         // public function listTopicsHome(){
 
