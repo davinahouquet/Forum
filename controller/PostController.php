@@ -29,18 +29,6 @@
                 ];
         }
 
-        // public function detailPost($id){
-
-        //     $postManager = new PostManager();
-
-        //     return [
-        //         "view" => VIEW_DIR."forum/detailPost.php",
-        //         "data" => [
-        //             "post" => $postManager->findOneById($id)
-        //         ]
-        //     ];
-        // }
-
         public function addPost($id){
 
             $postManager = new PostManager();
@@ -86,4 +74,13 @@
 
         //     }
         // }
+
+        public function deletePost($id){
+
+            $postManager = new PostManager();
+
+            $postManager->delete($id);
+
+            $this->redirectTo('forum');
+        }
     }

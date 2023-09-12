@@ -96,4 +96,5 @@
 
             $this->redirectTo('forum');
         }
+        
     }

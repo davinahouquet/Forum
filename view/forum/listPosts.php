@@ -21,7 +21,7 @@ $topic = $result['data']['topic'];
              <?php
                 if(isset($_SESSION['user'])){
             ?>
-                <button>Delete</button>
+                <button><a href="index.php?ctrl=post&action=deletePost&id=<?=  $post->getId() ?>">Delete</a></button>
          <?php
      }
 }
