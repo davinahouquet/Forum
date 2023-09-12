@@ -69,14 +69,14 @@
 
                 $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $question = filter_input(INPUT_POST, "question", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
+// var_dump($_POST);die;
                 if($name && $question){
 
                     $topicManager->updateTopic($id);
-
-                    // var_dump($_POST['updateTopic']);die;
+// var_dump($_POST);die;
                     $this->redirectTo('forum');
                 } else {
+                    echo "error";
                     $this->redirectTo('forum');
                 }
             }
@@ -88,24 +88,12 @@
                 ];
         }
 
-        // public function deleteTopic($id){
+        public function deleteTopic($id){
 
-        //     $topicManager = new TopicManager();
+            $topicManager = new TopicManager();
 
-        //     $topic = $topicManager->deleteTopicByUser($id);
+            $topicManager->delete($id);
 
-        //     //Sécuriser pour qu'un user ne puisse pas supprimer les posts d'autrui
-        //     $userId = $topic->getUser()->getId();
-        //     $userTopic = $topic['user'];
-
-        //     if($userId == $userTopic){
-
-        //         $topicManager->delete($id);
-        //         $this->redirectTo('topic', 'listTopicsByCategory');
-        //     } else {
-
-        //         $this->redirectTo('topic', 'listTopicByCategory');
-        //     }
-
-        // }
+            $this->redirectTo('forum');
+        }
     }

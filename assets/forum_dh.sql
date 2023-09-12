@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `post` (
   KEY `FK__topic_post` (`topic_id`),
   CONSTRAINT `FK__topic_post` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`id_topic`),
   CONSTRAINT `FK__user_post` FOREIGN KEY (`user_id`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- Listage des données de la table forum_dh.post : ~15 rows (environ)
 INSERT INTO `post` (`id_post`, `content`, `creationDate`, `user_id`, `topic_id`) VALUES
@@ -67,7 +67,12 @@ INSERT INTO `post` (`id_post`, `content`, `creationDate`, `user_id`, `topic_id`)
 	(14, 'Use balloons', '2023-09-08 15:06:48', 4, 20),
 	(15, 'Content\r\n', '2023-09-09 19:09:36', 1, 23),
 	(16, 'No', '2023-09-11 14:32:27', 1, 27),
-	(17, 'No', '2023-09-11 15:49:59', 1, 27);
+	(17, 'No', '2023-09-11 15:49:59', 1, 27),
+	(18, 'Test', '2023-09-12 09:11:19', 1, 1),
+	(19, 'ff', '2023-09-12 09:11:46', 1, 1),
+	(20, 'test', '2023-09-12 09:11:52', 1, 1),
+	(21, 'test', '2023-09-12 09:45:56', 1, 7),
+	(22, 'test', '2023-09-12 09:46:00', 1, 7);
 
 -- Listage de la structure de table forum_dh. topic
 CREATE TABLE IF NOT EXISTS `topic` (
@@ -83,9 +88,9 @@ CREATE TABLE IF NOT EXISTS `topic` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `FK__category` FOREIGN KEY (`category_id`) REFERENCES `category` (`id_category`),
   CONSTRAINT `FK__user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table forum_dh.topic : ~17 rows (environ)
+-- Listage des données de la table forum_dh.topic : ~25 rows (environ)
 INSERT INTO `topic` (`id_topic`, `closed`, `name`, `question`, `creationDate`, `category_id`, `user_id`) VALUES
 	(1, 0, 'Horror', 'Which horror book is the best?', '2023-09-06 00:00:00', 6, 1),
 	(2, 0, 'Mushrooms', 'Which mushrooms are the best?', '2023-09-06 00:00:00', 2, 5),
@@ -101,9 +106,17 @@ INSERT INTO `topic` (`id_topic`, `closed`, `name`, `question`, `creationDate`, `
 	(22, 0, '55', '55', '2023-09-08 15:47:42', 2, 1),
 	(23, 0, 'AA', 'AA', '2023-09-08 15:56:23', 2, 1),
 	(24, 0, 'Cat', 'What does a cat drink ?', '2023-09-08 15:58:19', 3, 1),
-	(25, 0, 'Test', 'Test', '2023-09-08 16:18:13', 6, 1),
+	(25, 0, 'Test sans user', 'Test 299', '2023-09-08 16:18:13', 6, 1),
 	(26, 0, 'Hello', 'How r u ', '2023-09-09 18:46:34', 2, 1),
-	(27, 0, 'Series', 'Are series part of cinema ?', '2023-09-11 14:32:19', 5, 1);
+	(27, 0, 'Series', 'Are series part of cinema ?', '2023-09-11 14:32:19', 5, 1),
+	(28, 0, 'test 299', 'Test 299', '2023-09-12 08:56:18', 6, 1),
+	(29, 0, 'test 5', 'test5\r\n', '2023-09-12 09:03:32', 6, 1),
+	(30, 0, 'Test sans user', 'Test 299', '2023-09-12 09:45:30', 4, 1),
+	(31, 0, 'Update Test', 'Try to update this topic', '2023-09-12 09:48:31', 6, 11),
+	(32, 0, 'testetes', 'test', '2023-09-12 10:44:47', 4, 11),
+	(33, 0, 'test 4', 'test 4\r\n', '2023-09-12 10:46:19', 5, 11),
+	(34, 0, 'test 4', 'test 4\r\n', '2023-09-12 10:47:45', 1, 11),
+	(35, 0, 'Test', 'Test', '2023-09-12 11:11:09', 1, 11);
 
 -- Listage de la structure de table forum_dh. user
 CREATE TABLE IF NOT EXISTS `user` (
