@@ -23,7 +23,7 @@
 <?php
                 if(isset($_SESSION['user'])){
 ?>
-                <a href="index.php?ctrl=post&action=updatePost&id=<?=  $post->getId() ?>">Update</a>
+                <button><a href="index.php?ctrl=post&action=updatePost&id=<?=  $post->getId() ?>">Update</a></button>
                 <button><a href="index.php?ctrl=post&action=deletePost&id=<?=  $post->getId() ?>">Delete</a></button>
 <?php
                 }
