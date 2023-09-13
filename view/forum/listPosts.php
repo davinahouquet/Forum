@@ -18,11 +18,16 @@
         <p><?=$post->getCreationDate()?></p>
         <p><?=$post->getUser()->getUsername()?></a></p>
 <?php
-                if(isset($_SESSION['user'])){
+        if(isset($_SESSION['user'])){
+                
+                // if($_SESSION['user'] == $posts['user']){
+                        // var_dump($_SESSION['user']);die;
 ?>
-                <button><a href="index.php?ctrl=post&action=updatePost&id=<?=  $post->getId() ?>">Update</a></button>
-                <button><a href="index.php?ctrl=post&action=deletePost&id=<?=  $post->getId() ?>">Delete</a></button>
+                        <button><a href="index.php?ctrl=post&action=updatePost&id=<?=  $post->getId() ?>">Update</a></button>
+                        <button><a href="index.php?ctrl=post&action=deletePost&id=<?=  $post->getId() ?>">Delete</a></button>
 <?php
+                } else {
+                        ?><button>Report this post</button><?php
                 }
         }
 }
@@ -32,7 +37,7 @@
 
 <?php
         if(isset($_SESSION['user'])){
-?>
+?>              
                 <button>+ADD POST</button>
 
                 <form enctype="multipart/data" action="index.php?ctrl=post&action=addPost&id=<?=$id?>" method="post">

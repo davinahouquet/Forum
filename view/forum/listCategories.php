@@ -5,7 +5,6 @@ $categories = $result["data"]['categories']; //récupère les données envoyées
 ?>
 
 <h1>Categories</h1>
-
 <?php
 
 foreach($categories as $category){
@@ -28,5 +27,3 @@ foreach($categories as $category){
     </form>
 <?php
     }
-
-  

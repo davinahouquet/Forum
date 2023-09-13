@@ -84,4 +84,17 @@
             $topicManager->delete($id);
             $this->redirectTo('forum');
         }
+        
+        public function listTopicsByUser($id){
+
+            $topicManager = new TopicManager;
+
+            return [
+                "view" => VIEW_DIR."forum/profile.php", //Interaction avec la vue
+                "data" => [
+                    "topics" => $topicManager->listTopicsByUserInProfile($id)
+                ]
+        ];
+
+        }
     }

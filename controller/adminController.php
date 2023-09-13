@@ -13,8 +13,9 @@
 
         }
 
-        public function users(){
-            $this->restrictTo("ROLE_USER");
+        public function listUsers(){
+            // die();
+            $this->restrictTo("ROLE_ADMIN");
 
             $userManager = new UserManager();
             

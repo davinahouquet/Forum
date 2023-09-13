@@ -53,7 +53,9 @@
         }
 
         public function updatePost($id){
+
             $postManager = new PostManager();
+            
             // $topicManager = new TopicManager();
             
             if(isset($_POST['submitUpdatePost'])){
