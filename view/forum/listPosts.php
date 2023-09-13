@@ -20,7 +20,7 @@
 <?php
         if(isset($_SESSION['user'])){
                 
-                // if($_SESSION['user'] == $posts['user']){
+                if(App\Session::getUser() == $post->getUser()){
                         // var_dump($_SESSION['user']);die;
 ?>
                         <button><a href="index.php?ctrl=post&action=updatePost&id=<?=  $post->getId() ?>">Update</a></button>
@@ -30,6 +30,7 @@
                         ?><button>Report this post</button><?php
                 }
         }
+}
 }
 ?>
 

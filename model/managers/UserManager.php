@@ -48,6 +48,16 @@
             );
         }
 
+        public function ban($id){
+
+            $sql = "UPDATE ".$this->tableName." SET ban = '1' WHERE id_user = :id";
+
+            return $this->getOneOrNullResult(
+                DAO::select($sql, ['id' => $id]), 
+                $this->className
+            );
+        }
+
         // public function listUsers($id){
 
         //     $sql = "SELECT * FROM ".$this->tableName." WHERE id_user = :id";

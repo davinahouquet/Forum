@@ -5,27 +5,33 @@
 <?php
 
     if(!isset($_SESSION['user'])){
+
+        // if($_SESSION['user']['ban'] !== 0){
+            // echo "BAN !";
+        // } else {
 ?>
-    <h2>Login</h2>
-    
-    <form enctype=mutlitpart/form-data action="index.php?ctrl=security&action=login" method="post">
-    
-        <label for="email">Email</label>
-        <input type="email" name="email" required>
-        
-        <label for="password">Password</label>
-        <input type="password" name="password" required>
-    
-        <input type="submit" name="submitLogin">
-        <p>pour co admin : <b>test10@hotmail.fr</b> mdp <b>test10</b></p>
-        <p>pour co avec topics + posts : <b>test4@hotmail.fr</b>mdp : <b>test4</b></p><br>
-    </form>
-
-    <p>
-        You don't have an account ? <b><a href="index.php?ctrl=security&action=registration" class="home-connexion">SIGN IN</b></a>
-    </p>
-
+            <h2>Login</h2>
+                
+                <form enctype=mutlitpart/form-data action="index.php?ctrl=security&action=login" method="post">
+                
+                    <label for="email">Email</label>
+                    <input type="email" name="email" required>
+                    
+                    <label for="password">Password</label>
+                    <input type="password" name="password" required>
+                
+                    <input type="submit" name="submitLogin">
+                    <p>pour co admin : <b>test10@hotmail.fr</b> mdp <b>test10</b></p>
+                    <p>pour co avec topics + posts : <b>test4@hotmail.fr</b>mdp : <b>test4</b></p><br>
+                </form>
+            
+                <p>
+                    You don't have an account ? <b><a href="index.php?ctrl=security&action=registration" class="home-connexion">SIGN IN</b></a>
+                </p>
+            
 <?php
+        // }
+
     }
 
 ?>

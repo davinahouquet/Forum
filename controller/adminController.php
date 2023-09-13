@@ -13,8 +13,9 @@
 
         }
 
+        //Accessible depuis le layout dans la section 'Users' réservée aux Admin
         public function listUsers(){
-            // die();
+
             $this->restrictTo("ROLE_ADMIN");
 
             $userManager = new UserManager();
@@ -28,4 +29,18 @@
                 ]
             ];
         }
+
+        //Accessible depuis la liste des Users 
+        public function ban($id){
+
+            $userManager = new UserManager();
+
+            $user = $userManager->ban($id);
+            //update $user['ban] à 1
+            return [
+                "view" => VIEW_DIR."security/listUsers.php"
+            ];
+
+        }
+
     }

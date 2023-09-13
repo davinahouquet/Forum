@@ -9,10 +9,17 @@ $categories = $result["data"]['categories']; //récupère les données envoyées
 
     foreach($categories as $category){
 ?>
-    <p><a href="index.php?ctrl=topic&action=listTopicsByCategory&id=<?= $category->getId() ?>"><?=$category->getCategoryName()?></a><a href="index.php?ctrl=category&action=deleteCategory&id=<?= $category->getId() ?>">X</a></p>
-    <!-- <button style="background :rgb(203, 8, 40)"><a href="index.php?ctrl=category&action=deleteCategory">X</a></button> -->
+    <p><a href="index.php?ctrl=topic&action=listTopicsByCategory&id=<?= $category->getId() ?>"><?=$category->getCategoryName()?></a></p>
+
+    <?php
+
+if(App\Session::isAdmin()){
+?>
+
+    <button style="background :rgb(203, 8, 40)"><a href="index.php?ctrl=category&action=deleteCategory&id=<?= $category->getId() ?>">X</a></button>
 
 <?php
+}
     }
         if(App\Session::isAdmin()){
 ?>
