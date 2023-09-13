@@ -10,7 +10,6 @@
     class CategoryController extends AbstractController implements ControllerInterface{
 
         public function index(){
-         
         }       
 
         public function listCategories(){
@@ -29,9 +28,7 @@
 
             $categoryManager = new CategoryManager();
 
-            // if($_SESSION['user'] == 'admin'){
-                // if($this->isAdmin()){
-            if($_SESSION['user']->isAdmin()){
+            $this->restrictTo('ROLE_ADMIN');
 
                 if(isset($_POST['submitCategory'])){
                     
@@ -41,14 +38,13 @@
                         
                         $categoryManager->add(["categoryName" => $category]);
 
-                        $this->redirectTo("topic", "listTopicsByCategory", $id);
-                        // header("Location: index.php?ctrl=topic&action=listTopicsByCategory&id=$id");
+                        // $this->redirectTo('forum');
                     }
                     return [
-                        "view" => VIEW_DIR. "forum/listCategory.php"
+                        "view" => VIEW_DIR. "forum/listCategories.php"
                     ];
                 }
 
-            }
+            // }
         }
     }

@@ -55,7 +55,7 @@
             );
         }
         
-        public function listTopicsByUserInProfile($id){
+        public function listTopicsByUser($id){
 
             parent::connect();
 
@@ -66,6 +66,7 @@
                 $this->className
             );
         }
+
         // public function addTopic(){
 
         //     parent::connect();

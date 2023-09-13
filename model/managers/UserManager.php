@@ -5,6 +5,8 @@
     use App\Manager;
     use App\DAO;
     use Model\Managers\UserManager;
+    use Model\Managers\TopicManager;
+    use Model\Managers\PostManager;
 
     class UserManager extends Manager{
 
@@ -45,4 +47,22 @@
                 $this->className
             );
         }
+
+        // public function listPostsAndTopics($id){
+
+        //     parent::connect();
+
+        //     $sql= "SELECT * FROM topic t
+        //     INNER JOIN post p ON t.user_id = p.user_id
+        //     WHERE p.user_id = :id
+        //     AND t.user_id = :id";
+        
+        // SELECT * FROM post
+        // where user_id = 11
+        // ORDER BY creationDate DESC
+        //     return $this->getMultipleResults(
+        //         DAO::select($sql, ["id"=>$id]),
+        //         $this->className
+        //     );
+        // }
     }

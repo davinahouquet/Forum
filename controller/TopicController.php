@@ -85,16 +85,16 @@
             $this->redirectTo('forum');
         }
         
-        public function listTopicsByUser($id){
+        // public function listTopicsByUser($id){
 
-            $topicManager = new TopicManager;
+        //     $topicManager = new TopicManager;
 
-            return [
-                "view" => VIEW_DIR."forum/profile.php", //Interaction avec la vue
-                "data" => [
-                    "topics" => $topicManager->listTopicsByUserInProfile($id)
-                ]
-        ];
+        //     return [
+        //         "view" => VIEW_DIR."forum/profile.php", //Interaction avec la vue
+        //         "data" => [
+        //             "topics" => $topicManager->listTopicsByUserInProfile($id)
+        //         ]
+        // ];
 
-        }
+        // }
     }
