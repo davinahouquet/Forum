@@ -46,7 +46,7 @@
             
             parent::connect();
 
-            $sql = "SELECT * FROM". $this->tableName." WHERE user_id = :id ORDER BY creationDate DESC";
+            $sql = "SELECT * FROM ". $this->tableName." WHERE user_id = :id ORDER BY creationDate DESC";
             
             return $this->getMultipleResults(
                 DAO::select($sql, ["id"=>$id]),

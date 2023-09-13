@@ -7,6 +7,7 @@
     use App\ControllerInterface;
     use Model\Managers\TopicManager;
     use Model\Managers\PostManager;
+    use Model\Managers\UserManager;
 
     class UserController extends AbstractController implements ControllerInterface{
 
@@ -23,35 +24,19 @@
 
 
         public function listTopicsAndPostsByUser($id){
-            return [
-                "view" => VIEW_DIR."forum/listTopicsAndPostsUser.php"
-                ];
-        }
-
-        //Lister les topics d'un utilisateur
-        public function listTopicsByUser($id){
 
             $topicManager = new TopicManager;
+            $postManager = new PostManager;
+            // $userManager = new UserManager;
+            
             
             return [
-                "view" => VIEW_DIR."forum/listTopicsAndPostsUser.php", //Interaction avec la vue
+                "view" => VIEW_DIR."forum/listTopicsAndPostsUser.php",
                 "data" => [
-                    "topics" => $topicManager->listTopicsByUser($id)
+                    "topics" => $topicManager->listTopicsByUser($id),
+                    "posts" =>$postManager->listPostsByUser($id)
+                    // "users" =>$userManager->listUsers($id)
                     ]
                 ];
-        }
-            
-        //Lister les posts d'un utilisateur
-        public function listPostsByUser($id){
-                
-            $postManager = new PostManager;
-
-            return [
-                "view" => VIEW_DIR."listTopicsAndPostsUser.php",
-                "data" => [
-                    "posts" =>$postManager->listPostsByUser($id)
-                    ]
-            ];
-
         }
 }

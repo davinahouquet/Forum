@@ -48,6 +48,16 @@
             );
         }
 
+        // public function listUsers($id){
+
+        //     $sql = "SELECT * FROM ".$this->tableName." WHERE id_user = :id";
+
+        //     return $this->getOneOrNullResult(
+        //         DAO::select($sql, ['id' => $id]), 
+        //         $this->className
+        //     );
+        // }
+        //Fonction qui permet de lister les topics ET les posts d'un user
         // public function listPostsAndTopics($id){
 
         //     parent::connect();
@@ -56,7 +66,7 @@
         //     INNER JOIN post p ON t.user_id = p.user_id
         //     WHERE p.user_id = :id
         //     AND t.user_id = :id";
-        
+
         // SELECT * FROM post
         // where user_id = 11
         // ORDER BY creationDate DESC
