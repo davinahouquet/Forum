@@ -30,17 +30,4 @@
             ];
         }
 
-        //Accessible depuis la liste des Users 
-        public function ban($id){
-
-            $userManager = new UserManager();
-
-            $user = $userManager->ban($id);
-            //update $user['ban] à 1
-            return [
-                "view" => VIEW_DIR."security/listUsers.php"
-            ];
-
-        }
-
     }

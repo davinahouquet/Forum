@@ -38,7 +38,7 @@
                 $content = filter_input(INPUT_POST, "content", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 
                 if($content){
-
+                    // if(App\Session::getUser() )
                     $postManager->add(["content" => $content, "topic_id" => $id, "user_id" => 11]);
                     // $postManager->add(["content" => $content, "topic_id" => $id, "user_id" => $this->getUser()->getId()]);
                     header("Location: index.php?ctrl=post&action=listPostsByTopics&id=$id");

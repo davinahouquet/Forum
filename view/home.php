@@ -5,10 +5,7 @@
 <?php
 
     if(!isset($_SESSION['user'])){
-
-        // if($_SESSION['user']['ban'] !== 0){
-            // echo "BAN !";
-        // } else {
+ 
 ?>
             <h2>Login</h2>
                 

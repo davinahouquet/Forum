@@ -17,6 +17,7 @@
             parent::connect();
         }
 
+        //Retrouver le password grâce à l'email
         public function retrievePassword($email){
 
             $sql = "SELECT password FROM ".$this->tableName." WHERE ".$this->tableName.".email = :email";
@@ -28,6 +29,7 @@
 
         }
 
+        //Retrouver un user grâce à son email
         public function findOneByEmail($email){
 
             $sql = "SELECT * FROM ".$this->tableName." WHERE ".$this->tableName.".email = :email";
@@ -48,41 +50,7 @@
             );
         }
 
-        public function ban($id){
+        public function ban($ban){
 
-            $sql = "UPDATE ".$this->tableName." SET ban = '1' WHERE id_user = :id";
-
-            return $this->getOneOrNullResult(
-                DAO::select($sql, ['id' => $id]), 
-                $this->className
-            );
         }
-
-        // public function listUsers($id){
-
-        //     $sql = "SELECT * FROM ".$this->tableName." WHERE id_user = :id";
-
-        //     return $this->getOneOrNullResult(
-        //         DAO::select($sql, ['id' => $id]), 
-        //         $this->className
-        //     );
-        // }
-        //Fonction qui permet de lister les topics ET les posts d'un user
-        // public function listPostsAndTopics($id){
-
-        //     parent::connect();
-
-        //     $sql= "SELECT * FROM topic t
-        //     INNER JOIN post p ON t.user_id = p.user_id
-        //     WHERE p.user_id = :id
-        //     AND t.user_id = :id";
-
-        // SELECT * FROM post
-        // where user_id = 11
-        // ORDER BY creationDate DESC
-        //     return $this->getMultipleResults(
-        //         DAO::select($sql, ["id"=>$id]),
-        //         $this->className
-        //     );
-        // }
-    }
+}
