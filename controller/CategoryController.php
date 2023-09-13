@@ -40,11 +40,24 @@
 
                         // $this->redirectTo('forum');
                     }
+                    header("Location: index.php?ctrl=category&action=listCategories");
                     return [
                         "view" => VIEW_DIR. "forum/listCategories.php"
                     ];
                 }
 
             // }
+        }
+
+        public function deleteCategory($id){
+
+            $categoryManager = new CategoryManager();
+
+            $this->restrictTo('ROLE_ADMIN');
+
+            $categoryManager->delete($id);
+
+            header("Location: index.php?ctrl=category&action=listCategories");
+
         }
     }

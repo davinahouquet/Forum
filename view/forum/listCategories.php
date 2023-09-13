@@ -9,17 +9,18 @@ $categories = $result["data"]['categories']; //récupère les données envoyées
 
     foreach($categories as $category){
 ?>
-    <p><a href="index.php?ctrl=topic&action=listTopicsByCategory&id=<?= $category->getId() ?>"><?=$category->getCategoryName()?></a></p>
+    <p><a href="index.php?ctrl=topic&action=listTopicsByCategory&id=<?= $category->getId() ?>"><?=$category->getCategoryName()?></a><a href="index.php?ctrl=category&action=deleteCategory&id=<?= $category->getId() ?>">X</a></p>
+    <!-- <button style="background :rgb(203, 8, 40)"><a href="index.php?ctrl=category&action=deleteCategory">X</a></button> -->
 
 <?php
     }
         if(App\Session::isAdmin()){
 ?>
-        <button>+ADD CATEGORY</button>
+        <button style="background :rgb(113, 213, 232)">+ADD CATEGORY</button>
 
         <p>Only admins can add categories ☺</p>
         
-        <form enctype="multipart/data" action="index.php?ctrl=post&action=addCategory" method="post">
+        <form enctype="multipart/data" action="index.php?ctrl=category&action=addCategory" method="post">
 
             <label for="category">Category</label>
             <input type="text" name="category">
