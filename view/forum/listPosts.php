@@ -1,10 +1,7 @@
 <?php
-        $posts = $result['data']['posts']; //récupère les données envoyées par le controller
-        // $topic = $posts->current()->getTopic();
-        // var_dump($topic);die;
+        $posts = $result['data']['posts'];
         $topic = $result['data']['topic'];
 ?>
-
         <h1><?= $topic->getName()?></h1>
         <h2><?= $topic->getQuestion()?></h2>
 
@@ -28,6 +25,7 @@
 <?php
                 }
         }
+}
 ?>
 
 </div>
@@ -47,4 +45,4 @@
         </form>
 <?php
         }
-        }
+        

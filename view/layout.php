@@ -32,6 +32,7 @@
                         ?>
                     </div>
                     <div id="nav-right">
+                    <a href="index.php?ctrl=admin&action=users" class="nav-item">Users</a>
                     <a href="index.php?ctrl=category&action=listCategories" class="nav-item">Categories</a>
                     <?php
                         

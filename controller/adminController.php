@@ -21,7 +21,7 @@
             $users =  $userManager->findAll(['registerDate', 'DESC']);
 
             return [
-                "view" => VIEW_DIR."security/users.php",
+                "view" => VIEW_DIR."security/listUsers.php",
                 "data" => [
                     "users" => $users
                 ]
