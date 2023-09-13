@@ -24,16 +24,17 @@ CREATE TABLE IF NOT EXISTS `category` (
   `id_category` int NOT NULL AUTO_INCREMENT,
   `categoryName` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_category`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table forum_dh.category : ~6 rows (environ)
+-- Listage des données de la table forum_dh.category : ~8 rows (environ)
 INSERT INTO `category` (`id_category`, `categoryName`) VALUES
 	(1, 'Sport'),
 	(2, 'Nature'),
 	(3, 'Animals'),
 	(4, 'Cooking'),
 	(5, 'Cinema'),
-	(6, 'Literature');
+	(6, 'Literature'),
+	(9, 'test');
 
 -- Listage de la structure de table forum_dh. post
 CREATE TABLE IF NOT EXISTS `post` (
@@ -47,9 +48,9 @@ CREATE TABLE IF NOT EXISTS `post` (
   KEY `FK__topic_post` (`topic_id`),
   CONSTRAINT `FK__topic_post` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`id_topic`),
   CONSTRAINT `FK__user_post` FOREIGN KEY (`user_id`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table forum_dh.post : ~29 rows (environ)
+-- Listage des données de la table forum_dh.post : ~37 rows (environ)
 INSERT INTO `post` (`id_post`, `content`, `creationDate`, `user_id`, `topic_id`) VALUES
 	(1, 'The red ones !!!', '2023-09-06 00:00:00', 1, 2),
 	(2, 'Because they are little', '2023-07-06 00:00:00', 2, 4),
@@ -79,7 +80,17 @@ INSERT INTO `post` (`id_post`, `content`, `creationDate`, `user_id`, `topic_id`)
 	(33, 'Test', '2023-09-12 15:05:15', 11, 3),
 	(34, 'wdfg', '2023-09-12 15:15:49', 11, 3),
 	(35, 'Indeed', '2023-09-12 16:07:38', 11, 19),
-	(36, 'eeeeeeeeeeh', '2023-09-12 16:07:42', 11, 19);
+	(36, 'eeeeeeeeeeh', '2023-09-12 16:07:42', 11, 19),
+	(37, 'Coucou ssss', '2023-09-13 08:32:08', 11, 19),
+	(38, 'hello', '2023-09-13 09:17:06', 11, 59),
+	(39, 'Test aaaaaaaaaaaaaaaaaa', '2023-09-13 09:17:57', 11, 56),
+	(40, 'test', '2023-09-13 09:20:45', 11, 58),
+	(41, 'test', '2023-09-13 09:20:50', 11, 58),
+	(42, 'test', '2023-09-13 09:20:56', 11, 54),
+	(43, 'tst', '2023-09-13 09:21:13', 11, 61),
+	(44, '&lt;button&gt;OO&lt;/button&gt;', '2023-09-13 10:36:19', 11, 62),
+	(45, 'hello', '2023-09-13 15:56:13', 11, 4),
+	(46, 'rtqre', '2023-09-13 16:31:00', 11, 62);
 
 -- Listage de la structure de table forum_dh. topic
 CREATE TABLE IF NOT EXISTS `topic` (
@@ -95,9 +106,9 @@ CREATE TABLE IF NOT EXISTS `topic` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `FK__category` FOREIGN KEY (`category_id`) REFERENCES `category` (`id_category`),
   CONSTRAINT `FK__user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table forum_dh.topic : ~29 rows (environ)
+-- Listage des données de la table forum_dh.topic : ~28 rows (environ)
 INSERT INTO `topic` (`id_topic`, `closed`, `name`, `question`, `creationDate`, `category_id`, `user_id`) VALUES
 	(1, 0, 'Horror', 'Which horror book is the best?', '2023-09-06 00:00:00', 6, 1),
 	(2, 0, 'Mushrooms test', 'blabla', '2023-09-06 00:00:00', 2, 5),
@@ -115,7 +126,6 @@ INSERT INTO `topic` (`id_topic`, `closed`, `name`, `question`, `creationDate`, `
 	(30, 0, 'Test sans user', 'Test 299', '2023-09-12 09:45:30', 4, 1),
 	(31, 0, 'Update Test', 'Try to update this topic', '2023-09-12 09:48:31', 6, 11),
 	(34, 0, 'test 4', 'test 4\r\n', '2023-09-12 10:47:45', 1, 11),
-	(41, 0, 'test', 'test', '2023-09-12 11:59:29', 3, 11),
 	(42, 0, 'test', 'test', '2023-09-12 11:59:32', 3, 11),
 	(46, 0, 'test', 'test', '2023-09-12 13:52:05', 5, 11),
 	(51, 0, 'test', 'test', '2023-09-12 14:05:26', 6, 11),
@@ -124,39 +134,41 @@ INSERT INTO `topic` (`id_topic`, `closed`, `name`, `question`, `creationDate`, `
 	(54, 0, 'test', 'test', '2023-09-12 14:05:36', 6, 11),
 	(55, 0, 'test', 'test', '2023-09-12 14:05:41', 3, 11),
 	(56, 0, 'test', 'test', '2023-09-12 14:05:47', 1, 11),
-	(57, 0, 'test', 'test', '2023-09-12 14:05:52', 1, 11),
 	(58, 0, 'test', 'test', '2023-09-12 14:06:01', 5, 11),
 	(59, 0, 'test', 'test', '2023-09-12 14:06:06', 4, 11),
-	(60, 0, 'test', 'test', '2023-09-12 14:06:12', 1, 11);
+	(61, 0, 'test', 'test', '2023-09-13 09:21:08', 3, 11),
+	(62, 0, 'test', 'test', '2023-09-13 10:36:10', 2, 11),
+	(63, 0, 'test 4', 'test4', '2023-09-13 15:58:44', 4, 11);
 
 -- Listage de la structure de table forum_dh. user
 CREATE TABLE IF NOT EXISTS `user` (
   `id_user` int NOT NULL AUTO_INCREMENT,
   `username` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '0',
-  `role` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT 'ROLE_USER',
+  `role` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT 'ROLE_USER',
   `email` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '0',
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '0',
   `registerDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ban` tinyint DEFAULT '0',
   PRIMARY KEY (`id_user`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table forum_dh.user : ~13 rows (environ)
-INSERT INTO `user` (`id_user`, `username`, `role`, `email`, `password`, `registerDate`) VALUES
-	(1, 'Samuel', 'user', 'samuel@hotmail.fr', '123', '2023-09-06 00:00:00'),
-	(2, 'Jenna', 'user', 'jenna@hotmail.fr', '123', '2023-09-06 00:00:00'),
-	(3, 'Chloe', 'user', 'chloe@hotmail.fr', '123', '2023-09-06 00:00:00'),
-	(4, 'Mike', 'user', 'mike@hotmail.fr', '123', '2023-09-06 00:00:00'),
-	(5, 'Heloise', 'user', 'heloise@hotmail.fr', '123', '2023-09-06 00:00:00'),
-	(7, 'test', '0', 'test@test.fr', '$2y$10$BTCypk.LByn6uHMctWibv.NeFjcfO067ji7Mlz4Cm.Ee2e6AEbacq', '2023-09-09 21:40:04'),
-	(8, 'test1', '0', 'test1@hotmail.fr', '$2y$10$XSphaozhPwWOrdysSLETBew2LH6gS2Cq8oVjZ6OSSotlre0hJpzWu', '2023-09-10 11:09:14'),
-	(9, 'test2', '0', 'test2@hotmail.fr', '$2y$10$JiZyIQdb6DGp03HOPa/rhO1raUbmn9.ulsTro9d4NGDXtKDZiZkvi', '2023-09-10 11:51:40'),
-	(10, 'test3', '0', 'test3@hotmail.fr', '$2y$10$2xg6a5X4wzdVwZi.k.sPf.FJePPFAY/xS9AwebkQSWbOD6lOH8za6', '2023-09-11 08:46:07'),
-	(11, 'test4', '0', 'test4@hotmail.fr', '$2y$10$WwEGt3QaNVPoqhAKb0CCsepdiED07PyjnvmzTcLeqmAH/Ys2xY9eS', '2023-09-11 08:48:25'),
-	(12, 'test7', '0', 'test7@live.fr', '$2y$10$Q9BrZRG0Sryk9Fe3yjdLXuN.wkU0Dc4SiqtMfD4rq1K4c.AjMoGeu', '2023-09-11 09:50:11'),
-	(13, 'test8', '0', 'test8@live.fr', '$2y$10$bRDHSW1EfIItBYfEnGhx3etQrf6F2oB9O.Fqd6x.DzxOAd6sEcJOu', '2023-09-11 10:55:23'),
-	(14, 'test9', '0', 'test9@live.fr', '$2y$10$oO/r1ksS.tiDJwh1xC1mLOls5LMPWtu5iD4M.2YdagqU10hFcQoQO', '2023-09-11 10:58:42'),
-	(15, 'admin', 'ROLE_ADMIN', 'admin@admin.fr', 'admin', '2023-09-11 15:01:20'),
-	(16, 'test10', 'ROLE_ADMIN', 'test10@hotmail.fr', '$2y$10$gcTFiru9WJAigH3qW9PVm.7PSOCNM9K9vNZednsm/8/96r38aQkUK', '2023-09-11 15:42:21');
+-- Listage des données de la table forum_dh.user : ~15 rows (environ)
+INSERT INTO `user` (`id_user`, `username`, `role`, `email`, `password`, `registerDate`, `ban`) VALUES
+	(1, 'Samuel', 'ROLE_USER', 'samuel@hotmail.fr', '123', '2023-09-06 00:00:00', 0),
+	(2, 'Jenna', 'ROLE_USER', 'jenna@hotmail.fr', '123', '2023-09-06 00:00:00', 0),
+	(3, 'Chloe', 'ROLE_USER', 'chloe@hotmail.fr', '123', '2023-09-06 00:00:00', 0),
+	(4, 'Mike', 'ROLE_USER', 'mike@hotmail.fr', '123', '2023-09-06 00:00:00', 0),
+	(5, 'Heloise', 'ROLE_USER', 'heloise@hotmail.fr', '123', '2023-09-06 00:00:00', 0),
+	(7, 'test', 'ROLE_USER', 'test@test.fr', '$2y$10$BTCypk.LByn6uHMctWibv.NeFjcfO067ji7Mlz4Cm.Ee2e6AEbacq', '2023-09-09 21:40:04', 0),
+	(8, 'test1', 'ROLE_USER', 'test1@hotmail.fr', '$2y$10$XSphaozhPwWOrdysSLETBew2LH6gS2Cq8oVjZ6OSSotlre0hJpzWu', '2023-09-10 11:09:14', 1),
+	(9, 'test2', 'ROLE_USER', 'test2@hotmail.fr', '$2y$10$JiZyIQdb6DGp03HOPa/rhO1raUbmn9.ulsTro9d4NGDXtKDZiZkvi', '2023-09-10 11:51:40', 0),
+	(10, 'test3', 'ROLE_USER', 'test3@hotmail.fr', '$2y$10$2xg6a5X4wzdVwZi.k.sPf.FJePPFAY/xS9AwebkQSWbOD6lOH8za6', '2023-09-11 08:46:07', 0),
+	(11, 'Morty', 'ROLE_USER', 'test4@hotmail.fr', '$2y$10$WwEGt3QaNVPoqhAKb0CCsepdiED07PyjnvmzTcLeqmAH/Ys2xY9eS', '2023-09-11 08:48:25', 0),
+	(12, 'test7', 'ROLE_USER', 'test7@live.fr', '$2y$10$Q9BrZRG0Sryk9Fe3yjdLXuN.wkU0Dc4SiqtMfD4rq1K4c.AjMoGeu', '2023-09-11 09:50:11', 0),
+	(13, 'test8', 'ROLE_USER', 'test8@live.fr', '$2y$10$bRDHSW1EfIItBYfEnGhx3etQrf6F2oB9O.Fqd6x.DzxOAd6sEcJOu', '2023-09-11 10:55:23', 0),
+	(14, 'test9', 'ROLE_USER', 'test9@live.fr', '$2y$10$oO/r1ksS.tiDJwh1xC1mLOls5LMPWtu5iD4M.2YdagqU10hFcQoQO', '2023-09-11 10:58:42', 0),
+	(15, 'admin', 'ROLE_ADMIN', 'admin@admin.fr', 'admin', '2023-09-11 15:01:20', 0),
+	(16, 'ADMIN', 'ROLE_ADMIN', 'test10@hotmail.fr', '$2y$10$gcTFiru9WJAigH3qW9PVm.7PSOCNM9K9vNZednsm/8/96r38aQkUK', '2023-09-11 15:42:21', 0);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
