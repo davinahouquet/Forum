@@ -26,7 +26,7 @@
                         
                         if(App\Session::isAdmin()){
                             ?>
-                            <a href="index.php?ctrl=home&action=users" class="nav-item">Users</a>
+                            <a href="index.php?ctrl=admin&action=users" class="nav-item">Users</a>
                             <?php
                         }
                         ?>

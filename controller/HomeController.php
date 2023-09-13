@@ -26,23 +26,6 @@
             ];
         }
             
-        
-   
-        public function users(){
-            $this->restrictTo("ROLE_USER");
-
-            $userManager = new UserManager();
-            
-            $users =  $userManager->findAll(['registerate', 'DESC']);
-
-            return [
-                "view" => VIEW_DIR."security/users.php",
-                "data" => [
-                    "users" => $users
-                ]
-            ];
-        }
-
         public function forumRules(){
             
             return [
