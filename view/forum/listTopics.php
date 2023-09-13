@@ -30,11 +30,16 @@
             <?php
 
             // if(isset($_SESSION['user']['id]) and $_SESSION['user'] == $topic->getUser()->getId()){
-            
+            if(App\Session::getUser() == $topic->getUser()){
             ?>
                 <button><a href="index.php?ctrl=topic&action=updateTopic&id=<?=  $topic->getId() ?>">Update</a></button>
                 <button><a href="index.php?ctrl=topic&action=deleteTopic&id=<?=  $topic->getId() ?>">Delete</a></button>
             <?php
+            } else {
+                ?>
+                <button>Report this topic</button>
+                <?php
+            }
             // }
         // }
 }
