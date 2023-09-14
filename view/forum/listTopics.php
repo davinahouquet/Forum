@@ -1,6 +1,10 @@
 <?php
     $topics = $result["data"]['topics'];
+?>
 
+<p><a href="index.php?ctrl=security&action=login">Log in</a> to edit a topic</p>
+
+<?php
     //Formulaire d'ajout de topic
     if(isset($_SESSION['user'])){
 ?>
@@ -28,9 +32,12 @@
             <p><?=$topic->getCreationDate()?></p>
 
             <?php
-
+            if(App\Session::isAdmin()){
+            ?>
+                <button><a href="index.php?ctrl=topic&action=deleteTopic&id=<?=  $topic->getId() ?>">Delete</a></button>
+            <?php
             // if(isset($_SESSION['user']['id]) and $_SESSION['user'] == $topic->getUser()->getId()){
-            if(App\Session::getUser() == $topic->getUser()){
+            } elseif(App\Session::getUser() == $topic->getUser()){
             ?>
                 <button><a href="index.php?ctrl=topic&action=updateTopic&id=<?=  $topic->getId() ?>">Update</a></button>
                 <button><a href="index.php?ctrl=topic&action=deleteTopic&id=<?=  $topic->getId() ?>">Delete</a></button>
