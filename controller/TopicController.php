@@ -103,16 +103,11 @@
             $this->redirectTo('forum');
         }
         
-        // public function listTopicsByUser($id){
+         public function closeTopic($id){
+            
+            $topicManager = new TopicManager();
+            $topicManager->closeTopic($id);
 
-        //     $topicManager = new TopicManager;
-
-        //     return [
-        //         "view" => VIEW_DIR."forum/profile.php", //Interaction avec la vue
-        //         "data" => [
-        //             "topics" => $topicManager->listTopicsByUserInProfile($id)
-        //         ]
-        // ];
-
-        // }
+            $this->redirectTo('forum');
+         }
     }

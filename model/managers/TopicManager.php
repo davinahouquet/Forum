@@ -67,17 +67,13 @@
             );
         }
 
-        // public function addTopic(){
+        public function closeTopic($id){
 
-        //     parent::connect();
+            parent::connect();
 
-        //     $sql = "INSERT INTO". $this->tableName ."(id_topic, closed, NAME, title, creationDate, category_id, user_id) VALUES ('8', '0', 'Test', 'Test', '2023-09-08', '1', '1')";
+            $sql = "UPDATE ". $this->tableName." SET closed = '1' WHERE id_topic = :id";
 
-        //     return $this->getMultipleResults(
-        //         DAO::select($sql, ['id'=>$id]),
-        //         $this->className
-        //     );
-
-        // }
+            DAO::update($sql, ['id'=>$id]);
+        }
         
     }

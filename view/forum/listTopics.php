@@ -35,12 +35,29 @@
             if(App\Session::isAdmin()){
             ?>
                 <button><a href="index.php?ctrl=topic&action=deleteTopic&id=<?=  $topic->getId() ?>">Delete</a></button>
-            <?php
+<?php
+                if($topic->getClosed() !== 1){
+?>
+                    <button><a href="index.php?ctrl=topic&action=closeTopic&id=<?=  $topic->getId() ?>"  id="closeTopic">Close Topic</a></button>
+<?php
+                } else {
+                    echo "Topic closed";
+                }
             // if(isset($_SESSION['user']['id]) and $_SESSION['user'] == $topic->getUser()->getId()){
             } elseif(App\Session::getUser() == $topic->getUser()){
-            ?>
+?>
                 <button><a href="index.php?ctrl=topic&action=updateTopic&id=<?=  $topic->getId() ?>">Update</a></button>
+<?php
+                if($topic->getClosed() !== 1){
+?>
+                    <button><a href="index.php?ctrl=topic&action=closeTopic&id=<?=  $topic->getId() ?>">Close Topic</a></button>
+<?php
+                } else {
+                    echo "Topic closed";
+                }
+?>
                 <button><a href="index.php?ctrl=topic&action=deleteTopic&id=<?=  $topic->getId() ?>">Delete</a></button>
+
             <?php
             } else {
                 ?>
@@ -50,3 +67,11 @@
             // }
         // }
 }
+?>
+<script>
+
+//ajouter écouteur d'évenement à l'id closeTopic pour confirm()
+
+
+
+</script>
