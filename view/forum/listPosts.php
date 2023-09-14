@@ -43,17 +43,23 @@
 
 <?php
         if(isset($_SESSION['user'])){
-?>              
-                <button>+ADD POST</button>
 
-                <form enctype="multipart/data" action="index.php?ctrl=post&action=addPost&id=<?=$id?>" method="post">
+                if($topic->getClosed() !== 1){
 
-                        <label for="content">Content</label>
-                        <textarea name="content" id="content"></textarea>
-
-                <input type="submit" name="submitPost">
-
-        </form>
-<?php
+                        ?>              
+                                        <button>+ADD POST</button>
+                        
+                                        <form enctype="multipart/data" action="index.php?ctrl=post&action=addPost&id=<?=$id?>" method="post">
+                        
+                                                <label for="content">Content</label>
+                                                <textarea name="content" id="content"></textarea>
+                        
+                                        <input type="submit" name="submitPost">
+                        
+                                </form>
+                        <?php
+                } else {
+                        echo "Topic closed";
+                }
         }
         

@@ -71,7 +71,7 @@
 <script>
 
 //ajouter écouteur d'évenement à l'id closeTopic pour confirm()
-
+    
 
 
 </script>
