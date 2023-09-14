@@ -7,6 +7,7 @@
     use App\ControllerInterface;
     use Model\Managers\TopicManager;
     use Model\Managers\CategoryManager;
+    use Model\Managers\UserManager;
 
     class TopicController extends AbstractController implements ControllerInterface{
 
@@ -33,25 +34,41 @@
         public function addTopic($id){
 
             $topicManager = new TopicManager();
+            $userManager = new UserManager();
+
+            
             if(isset($_SESSION['user'])){
+                
+                // $user = App\Session::getUser();
                 
                 if(isset($_POST['submitTopic'])){
                     
-                    $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                    $question = filter_input(INPUT_POST, "question", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                    
-                    if($name && $question){
-                        // $topicManager->add(["id_topic" => $id, "closed" => $closed, "NAME" => $name, "title" =>$title, "creationDate" => $creationDate, "category_id" => $category, "user_id" => $user()]);
-                        $topicManager->add(["name" => $name, "question" =>$question, "category_id" => $id, "user_id" => 11]);
-                        header("Location: index.php?ctrl=topic&action=listTopicsByCategory&id=$id");
+                    $userBan = Session::getUser()->getBan();
+// var_dump($userBan); die;
+                    if($userBan !== 0){
+
+                        $msg = "You are banned !";
+                        Session::addFlash('error', $msg);
+                        $this->redirectTo('forum');
+                        exit;
+
+                    } else {
+
+                        $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                        $question = filter_input(INPUT_POST, "question", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                        
+                        if($name && $question){
+                            // $topicManager->add(["id_topic" => $id, "closed" => $closed, "NAME" => $name, "title" =>$title, "creationDate" => $creationDate, "category_id" => $category, "user_id" => $user()]);
+                            $topicManager->add(["name" => $name, "question" =>$question, "category_id" => $id, "user_id" => 11]);
+                            header("Location: index.php?ctrl=topic&action=listTopicsByCategory&id=$id");
+                        }
+                            // Pas besoin de l'id_topic puisque c'est en auto increment dans la base de données, l'id en cours est celui de la categorie, creationDate a déjà une valeur par défaut
+                        return [
+                            "view" => VIEW_DIR. "forum/listTopics.php"
+                        ];
                     }
-                        // Pas besoin de l'id_topic puisque c'est en auto increment dans la base de données, l'id en cours est celui de la categorie, creationDate a déjà une valeur par défaut
-                    return [
-                        "view" => VIEW_DIR. "forum/listTopics.php"
-                    ];
                 }
             }
-            
         }
 
         public function updateTopic($id){

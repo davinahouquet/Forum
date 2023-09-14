@@ -4,7 +4,6 @@
 
     use App\Manager;
     use App\DAO;
-    use Model\Managers\UserManager;
     use Model\Managers\TopicManager;
     use Model\Managers\PostManager;
 
@@ -50,7 +49,17 @@
             );
         }
 
-        public function ban($ban){
+        public function ban($id){
 
+            $sql = "UPDATE ".$this->tableName." SET ban = '1' WHERE id_user = :id";
+
+            DAO::update($sql, ['id'=>$id]);
+        }
+
+        public function deban($id){
+
+            $sql = "UPDATE ".$this->tableName." SET ban = '0' WHERE id_user = :id";
+
+            DAO::update($sql, ['id'=>$id]);
         }
 }

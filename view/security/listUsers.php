@@ -12,6 +12,8 @@
 
         <button style="background :rgb(113, 213, 232)"><a href="index.php?ctrl=user&action=listTopicsAndPostsByUser&id=<?= $user->getId()?>">See topics and posts</a></button>
         <button style="background :rgb(203, 8, 40)"><a href="index.php?ctrl=admin&action=ban&id=<?= $user->getId() ?>">Ban</a></button>
-        <button style="background :red"><a href="">Delete</a></button>
+
+        <!-- Mettre une condition, si banni afficher ce bouton -->
+        <button style="background :rgb(19, 131, 102)"><a href="index.php?ctrl=admin&action=deban&id=<?= $user->getId() ?>">Deban</a></button>
 <?php
     }

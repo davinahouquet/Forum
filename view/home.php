@@ -5,7 +5,6 @@
 <?php
 
     if(!isset($_SESSION['user'])){
- 
 ?>
             <h2>Login</h2>
                 

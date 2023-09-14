@@ -30,4 +30,29 @@
             ];
         }
 
+        public function ban($id){
+
+            $userManager = new UserManager();
+
+            $ban = $userManager->ban($id);
+
+            $this->redirectTo('admin', 'listUsers');
+
+            return [
+                "view" => VIEW_DIR."security/listUsers.php"
+            ];
+        }
+
+        public function deban($id){
+
+            $userManager = new UserManager();
+
+            $deban = $userManager->deban($id);
+
+            $this->redirectTo('admin', 'listUsers');
+            
+            return [
+                "view" => VIEW_DIR."security/listUsers.php"
+            ];
+        }
     }

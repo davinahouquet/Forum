@@ -11,6 +11,7 @@
         private $email;
         private $password;
         private $registerDate;
+        private $ban;
 
         public function __construct($data){         
             $this->hydrate($data);        
@@ -125,5 +126,16 @@
 
         public function __toString(){
             return $this->username;
+        }
+
+        public function getBan(){
+            return $this->ban;
+        }
+
+        public function setBan($ban){
+
+            $this->ban = $ban;
+
+            return $this;
         }
     }
