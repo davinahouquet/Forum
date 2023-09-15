@@ -136,7 +136,7 @@
             $this->redirectTo('forum');
         }
         
-         public function closeTopic($id){
+        public function closeTopic($id){
             
             $topicManager = new TopicManager();
             $topicManager->closeTopic($id);
@@ -146,4 +146,15 @@
 
             $this->redirectTo('forum');
          }
+
+        public function openTopic($id){
+
+            $topicManager = new TopicManager();
+            $topicManager->openTopic($id);
+
+            $msg = "Topic open !";
+            Session::addFlash('success', $msg);
+
+            $this->redirectTo('forum');
+        }
     }

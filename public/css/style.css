@@ -13,6 +13,10 @@
     --hover:rgb(0, 218, 226);
 }
 
+input{
+    border-radius: 3px;
+}
+
 /*---------- LAYOUT ----------*/
 nav{
     display: flex;
@@ -50,7 +54,7 @@ footer{
     align-items: flex-end;
     justify-content: center;
     min-height: 50px;
-    position: absolute;
+    position: static;
     bottom: 0;
     width: 100%;
     height: 2.5rem;
@@ -63,6 +67,22 @@ h1{
     -webkit-text-fill-color: transparent;
 }
 
+.welcome{
+    text-align: center;
+}
+
+.login-home{
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #bcd1d8;
+    padding: 20px;
+    box-shadow: 4px 4px 4px grey;
+    margin: 20px;
+    
+}
 .home-connexion{
     color: var(--darkfont);
     transition: 0.5s;
@@ -82,4 +102,22 @@ h1{
     background-color: rgb(215, 215, 226);
     margin:5px;
     transition: 0.5s;
+}
+
+
+/* ---------- TOPIC ----------- */
+.topics-container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: stretch;
+    justify-content: center;
+}
+
+.topic{
+    background-color: #c2d7dd;
+    width: 500px;
+    padding: 20px;
+    margin: 5px;
 }

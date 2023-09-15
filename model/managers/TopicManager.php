@@ -76,6 +76,14 @@
             DAO::update($sql, ['id'=>$id]);
         }
         
+        public function openTopic($id){
+            parent::connect();
+
+            $sql = "UPDATE ". $this->tableName." SET closed = '0' WHERE id_topic = :id";
+
+            DAO::update($sql, ['id'=>$id]);
+        }
+
         public function deleteTopic($id){
 
             parent::connect();

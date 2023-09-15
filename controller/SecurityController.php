@@ -22,10 +22,6 @@
                 $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL, FILTER_VALIDATE_EMAIL);
                 $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $confirmPassword = filter_input(INPUT_POST, "confirmPassword", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                // var_dump($username);
-                // var_dump($email);
-                // var_dump($password);
-                // var_dump($confirmPassword);
 
                 if($username && $email && $password){
 
@@ -50,10 +46,13 @@
                                 Session::addFlash('success', $msg);
 
                                 //on redirige vers le formulaire de login dans la foulée
-                                header("Location: index.php?ctrl=security&action=login");
-                            } else {
-                                echo "Invalid password";
-                                header("Location: index.php?ctrl=security&action=registration");
+                                $this->redirectTo('security', 'login');
+                            } else {                                
+                                
+                                $msg = "Invalid password !";
+                                Session::addFlash('error', $msg);
+
+                                $this->redirectTo('security', 'registration');
                             }
                         }
                     }
@@ -77,8 +76,6 @@
             if($email && $password){
             //on recherche le mot de passe associé à l'adresse mail
                 $dbPass = $userManager->retrievePassword($email);
-                // var_dump($email); die;
-                // var_dump($password); die;
 
                 if($dbPass){
 
@@ -101,7 +98,7 @@
                             $userId = $user->getId();
                             
                             $this->redirectTo('forum', $userId);
-                            // header("Location: index.php?ctrl=home&action=index&id=".$user->getId()." ");
+                          
                         }        
                     } else {
 
@@ -122,7 +119,7 @@
             }
         }
         return [
-                "view" => VIEW_DIR."security/login.php", //Interaction avec la vue
+                "view" => VIEW_DIR."security/login.php", 
         ];
     }
 

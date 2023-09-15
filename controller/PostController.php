@@ -116,7 +116,9 @@
 
             $msg = "Your post has been deleted";
             Session::addFlash('error', $msg);
+
             $this->redirectTo('forum');
+            // $this->redirectTo('post', 'listPostsByTopics', $id);
         }
 
 

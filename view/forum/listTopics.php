@@ -67,8 +67,11 @@ if($topics == null){
 <?php
             } else {
                 echo "Topic closed";
+ ?>
+                <button><a href="index.php?ctrl=topic&action=openTopic&id=<?=  $topic->getId() ?>"  id="closeTopic">Open Topic</a></button>
+<?php
             }
-        // if(isset($_SESSION['user']['id]) and $_SESSION['user'] == $topic->getUser()->getId()){
+       
         } elseif(App\Session::getUser() == $topic->getUser()){
 ?>
             <button><a href="index.php?ctrl=topic&action=updateTopic&id=<?=  $topic->getId() ?>">Update</a></button>
@@ -89,15 +92,6 @@ if($topics == null){
             <button>Report this topic</button>
             <?php
         }
-        // }
-    // }
-}
+    }
 }
 ?>
-<script>
-
-//ajouter écouteur d'évenement à l'id closeTopic pour confirm()
-    
-
-
-</script>
