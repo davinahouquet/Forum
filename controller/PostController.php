@@ -20,13 +20,20 @@
             $postManager = new PostManager();
             $topicManager = new TopicManager();
 
+            $topic =  $topicManager->findOneById($id);
+            if($topic) {
                 return [
                         "view" => VIEW_DIR."forum/listPosts.php", //Interagiction avec la vue
                          "data" => [
                             "posts" => $postManager->postsByTopic($id),
-                            "topic" => $topicManager->findOneById($id)
+                            "topic" => $topic
                         ]
                 ];
+            } else {
+                $msg = "This topic doesn't exist !";
+                Session::addFlash('error', $msg);
+                $this->redirectTo('forum');
+            }
         }
 
         public function addPost($id){

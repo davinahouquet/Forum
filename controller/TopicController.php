@@ -16,19 +16,32 @@
         }
         
         public function listTopicsByCategory($id){
-            
-            if (isset($_POST['submitTopic'])){
-                header("Location: index.php?ctrl=topic&action=addTopic");
-                //Rediriger si une action est effectuée
-            }
-            //Donc on ira pas jusqu'au contenu en dessous
+
             $topicManager = new TopicManager();
-                return [
-                        "view" => VIEW_DIR."forum/listTopics.php", //Interaction avec la vue
-                            "data" => [
-                            "topics" => $topicManager->topicByCategory($id)
-                        ]
-                ];
+            
+            $topic = $topicManager->topicByCategory($id);
+
+            if($topic){
+
+                if (isset($_POST['submitTopic'])){
+                    header("Location: index.php?ctrl=topic&action=addTopic");
+                    //Rediriger si une action est effectuée
+                }
+                //Donc on ira pas jusqu'au contenu en dessous
+                    return [
+                            "view" => VIEW_DIR."forum/listTopics.php", //Interaction avec la vue
+                                "data" => [
+                                "topics" => $topic
+                            ]
+                    ];
+            } else {
+
+                $msg = "This category doesn't exist !";
+                Session::addFlash('error', $msg);
+                $this->redirectTo('forum');
+            }
+
+
         }
 
         public function addTopic($id){
