@@ -1,5 +1,6 @@
 <?php
     $topics = $result['data']['topics'];
+    $posts = $result['data']['posts'];
 ?>
     <h1> Welcome to your profile <?=  App\Session::getUser()->getUsername() ?> !</h1>
 
@@ -13,7 +14,17 @@
 
     <?php
         foreach($topics as $topic){
-            echo $topic->getName();
+    ?>
+           <p><?= $topic->getName() ?></p>
+    <?php
         }
     ?>
     <h3>Your posts :</h3>
+
+    <?php
+        foreach($posts as $post){
+    ?>
+           <p><?= $post->getContent() ?></p>
+    <?php
+        }
+    ?>

@@ -14,14 +14,6 @@
         public function index(){
             
         }
-        
-        public function userProfile($id){
-
-            return [
-                "view" => VIEW_DIR. "forum/profile.php",
-            ];
-        }
-
 
         public function listTopicsAndPostsByUser($id){
 
@@ -37,6 +29,25 @@
                     "posts" =>$postManager->listPostsByUser($id)
                     // "users" =>$userManager->listUsers($id)
                     ]
-                ];
+            ];
         }
+
+            public function userProfile($id){
+
+                $userManager = new UserManager;
+                $topicManager = new TopicManager;
+                $postManager = new PostManager;
+                
+                $topics = $topicManager->listTopicsByUser($id);
+                $posts = $postManager->listPostsByUser($id);
+
+                return [
+                    "view" => VIEW_DIR."forum/profile.php",
+                    "data" => [
+                        "topics" => $topics,
+                        "posts" => $posts
+                    ]
+                ];
+
+            }
 }
