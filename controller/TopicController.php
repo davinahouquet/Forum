@@ -51,27 +51,26 @@
 
             $userId = Session::getUser()->getId();
             $userBan = Session::getUser()->getBan();
+            
+// var_dump($userBan); die;
 
             if(isset($_SESSION['user'])){
                 
-                // $user = App\Session::getUser();
-                
                 if(isset($_POST['submitTopic'])){
-                    
-// var_dump($userBan); die;
-                    if($userBan !== 0){
 
-                        $msg = "You are banned !";
-                        Session::addFlash('error', $msg);
-                        $this->redirectTo('forum');
-                        exit;
+                    $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                    $question = filter_input(INPUT_POST, "question", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-                    } else {
+                    if($name && $question){
 
-                        $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                        $question = filter_input(INPUT_POST, "question", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                        
-                        if($name && $question){
+                            if($userBan !== "0"){
+                            
+                                $msg = "You are banned !";
+                                Session::addFlash('error', $msg);
+                                $this->redirectTo('forum');
+                                exit;
+                            
+                            } else {
                             // $topicManager->add(["id_topic" => $id, "closed" => $closed, "NAME" => $name, "title" =>$title, "creationDate" => $creationDate, "category_id" => $category, "user_id" => $user()]);
                             $topicManager->add(["name" => $name, "question" =>$question, "category_id" => $id, "user_id" => $userId]);
                             header("Location: index.php?ctrl=topic&action=listTopicsByCategory&id=$id");
