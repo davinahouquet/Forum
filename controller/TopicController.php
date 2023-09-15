@@ -37,6 +37,7 @@
             $userManager = new UserManager();
 
             $userId = Session::getUser()->getId();
+            $userBan = Session::getUser()->getBan();
 
             if(isset($_SESSION['user'])){
                 
@@ -44,7 +45,6 @@
                 
                 if(isset($_POST['submitTopic'])){
                     
-                    $userBan = Session::getUser()->getBan();
 // var_dump($userBan); die;
                     if($userBan !== 0){
 

@@ -34,16 +34,28 @@
             $postManager = new PostManager();
 
             $userId = Session::getUser()->getId();
+            $userBan = Session::getUser()->getBan();
 
             if(isset($_POST['submitPost'])){
                 
                 $content = filter_input(INPUT_POST, "content", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 
                 if($content){
-                    // if(App\Session::getUser() )
-                    $postManager->add(["content" => $content, "topic_id" => $id, "user_id" => $userId]);
-                    // $postManager->add(["content" => $content, "topic_id" => $id, "user_id" => $this->getUser()->getId()]);
-                    header("Location: index.php?ctrl=post&action=listPostsByTopics&id=$id");
+
+                    if($userBan !== "0"){
+                        $msg = "You can't post, you are banned";
+                        Session::addFlash('error', $msg);
+                        // header("Location: index.php?ctrl=post&action=listPostsByTopics&id=$id");
+                        $this->redirectTo('posts', 'listPostsByTopics&id='.$id.'');
+                        exit;
+
+                    } else {
+                        // if(App\Session::getUser() )
+                        $postManager->add(["content" => $content, "topic_id" => $id, "user_id" => $userId]);
+                        // $postManager->add(["content" => $content, "topic_id" => $id, "user_id" => $this->getUser()->getId()]);
+                        header("Location: index.php?ctrl=post&action=listPostsByTopics&id=$id");
+                    }
+
 
                 }
 
