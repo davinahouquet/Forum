@@ -63,16 +63,18 @@
 
                     if($name && $question){
 
-                            if($userBan !== "0"){
+                            if($userBan == "1"){
                             
                                 $msg = "You are banned !";
                                 Session::addFlash('error', $msg);
                                 $this->redirectTo('forum');
-                                exit;
                             
                             } else {
-                            // $topicManager->add(["id_topic" => $id, "closed" => $closed, "NAME" => $name, "title" =>$title, "creationDate" => $creationDate, "category_id" => $category, "user_id" => $user()]);
+                            
                             $topicManager->add(["name" => $name, "question" =>$question, "category_id" => $id, "user_id" => $userId]);
+
+                            $msg = "Topic added !";
+                            Session::addFlash('success', $msg);
                             header("Location: index.php?ctrl=topic&action=listTopicsByCategory&id=$id");
                         }
                             // Pas besoin de l'id_topic puisque c'est en auto increment dans la base de données, l'id en cours est celui de la categorie, creationDate a déjà une valeur par défaut
