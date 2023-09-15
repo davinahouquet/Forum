@@ -16,7 +16,7 @@
             parent::connect();
         }
 
-        public function topicByCategory($id){
+        public function topicsByCategory($id){
 
             parent::connect();
 

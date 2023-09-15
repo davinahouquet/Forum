@@ -18,28 +18,34 @@
         public function listTopicsByCategory($id){
 
             $topicManager = new TopicManager();
+            $categoryManager = new CategoryManager();
             
-            $topic = $topicManager->topicByCategory($id);
+            $categorie = $categoryManager->findOneById($id);
 
-            if($topic){
+            $topics = $topicManager->topicsByCategory($id);
+// var_dump($topics); die;
+            if($categorie){
 
                 if (isset($_POST['submitTopic'])){
-                    header("Location: index.php?ctrl=topic&action=addTopic");
-                    //Rediriger si une action est effectuée
-                }
-                //Donc on ira pas jusqu'au contenu en dessous
-                    return [
-                            "view" => VIEW_DIR."forum/listTopics.php", //Interaction avec la vue
-                                "data" => [
-                                "topics" => $topic
-                            ]
-                    ];
-            } else {
 
+                header("Location: index.php?ctrl=topic&action=addTopic");
+                    
+                }
+            } else {
+                
                 $msg = "This category doesn't exist !";
                 Session::addFlash('error', $msg);
+                
                 $this->redirectTo('forum');
             }
+            //Donc on ira pas jusqu'au contenu en dessous
+                return [
+                        "view" => VIEW_DIR."forum/listTopics.php", //Interaction avec la vue
+                            "data" => [
+                            "topics" => $topics,
+                            "categorie" =>$categorie
+                        ]
+                ];
 
 
         }
@@ -52,8 +58,6 @@
             $userId = Session::getUser()->getId();
             $userBan = Session::getUser()->getBan();
             
-// var_dump($userBan); die;
-
             if(isset($_SESSION['user'])){
                 
                 if(isset($_POST['submitTopic'])){
@@ -75,6 +79,7 @@
 
                             $msg = "Topic added !";
                             Session::addFlash('success', $msg);
+
                             header("Location: index.php?ctrl=topic&action=listTopicsByCategory&id=$id");
                         }
                             // Pas besoin de l'id_topic puisque c'est en auto increment dans la base de données, l'id en cours est celui de la categorie, creationDate a déjà une valeur par défaut
@@ -89,16 +94,24 @@
         public function updateTopic($id){
 
             $topicManager = new TopicManager();
+
             if(isset($_POST['updateTopic'])){
                 $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $question = filter_input(INPUT_POST, "question", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                // var_dump($_POST);die;
+                
                 if($name && $question){
-                    // var_dump($_POST);die;
+                    
                     $topicManager->updateTopic($id, $name, $question);
+
+                    $msg = "Topic updated !";
+                    Session::addFlash('success', $msg);
+                    
                     $this->redirectTo('forum');
                 } else {
-                    echo "error";
+
+                    $msg = "Error !";
+                    Session::addFlash('error', $msg);
+                    
                     $this->redirectTo('forum');
                 }
             }
@@ -114,6 +127,10 @@
 
             $topicManager = new TopicManager();
             $topicManager->delete($id);
+
+            $msg = "Topic deleted !";
+            Session::addFlash('error', $msg);
+
             $this->redirectTo('forum');
         }
         
@@ -121,6 +138,9 @@
             
             $topicManager = new TopicManager();
             $topicManager->closeTopic($id);
+
+            $msg = "Topic closed !";
+            Session::addFlash('error', $msg);
 
             $this->redirectTo('forum');
          }

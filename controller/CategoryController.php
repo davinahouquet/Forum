@@ -37,10 +37,13 @@
                     if($category){
                         
                         $categoryManager->add(["categoryName" => $category]);
+                        
+                        $msg = "Category added";
+                        Session::addFlash('success', $msg);
 
-                        // $this->redirectTo('forum');
+                        $this->redirectTo('category', 'listCategories');
+                        // header("Location: index.php?ctrl=topic&action=listTopicsByCategory&id=".$category->getId()." ");
                     }
-                    header("Location: index.php?ctrl=category&action=listCategories");
                     return [
                         "view" => VIEW_DIR. "forum/listCategories.php"
                     ];

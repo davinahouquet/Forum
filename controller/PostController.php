@@ -21,9 +21,10 @@
             $topicManager = new TopicManager();
 
             $topic =  $topicManager->findOneById($id);
+
             if($topic) {
                 return [
-                        "view" => VIEW_DIR."forum/listPosts.php", //Interagiction avec la vue
+                        "view" => VIEW_DIR."forum/listPosts.php",
                          "data" => [
                             "posts" => $postManager->postsByTopic($id),
                             "topic" => $topic
@@ -49,17 +50,20 @@
                 
                 if($content){
 
-                    if($userBan !== "0"){
+                    if($userBan == "1"){
                         $msg = "You can't post, you are banned";
                         Session::addFlash('error', $msg);
-                        // header("Location: index.php?ctrl=post&action=listPostsByTopics&id=$id");
+                        
                         $this->redirectTo('posts', 'listPostsByTopics&id='.$id.'');
                         exit;
 
                     } else {
-                        // if(App\Session::getUser() )
+                       
                         $postManager->add(["content" => $content, "topic_id" => $id, "user_id" => $userId]);
-                        // $postManager->add(["content" => $content, "topic_id" => $id, "user_id" => $this->getUser()->getId()]);
+                       
+                        $msg = "Post added";
+                        Session::addFlash('success', $msg);
+
                         header("Location: index.php?ctrl=post&action=listPostsByTopics&id=$id");
                     }
 
@@ -77,29 +81,28 @@
 
             $postManager = new PostManager();
             
-            // $topicManager = new TopicManager();
             
             if(isset($_POST['submitUpdatePost'])){
-                // var_dump($_POST); die;
-                // var_dump($content);
                 
                 $content = filter_input(INPUT_POST, "content", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 
                 if($content){
 
                     $postManager->updatePost($id, $content);
-                    // $postManager->add(["content" => $content, "topic_id" => $id, "user_id" => $this->getUser()->getId()]);
-                    $this->redirectTo('forum');
-                    // header("Location: index.php?ctrl=post&action=listPostsByTopics&id=$id");
 
+                    $msg = "Post updated !";
+                    Session::addFlash('success', $msg);
+                    
+                    $this->redirectTo('forum');
+                    
                 }
             }
                 
                 return [
-                    "view" => VIEW_DIR."forum/updatePost.php", //Interaction avec la vue
+                    "view" => VIEW_DIR."forum/updatePost.php",
                     "data" => [
                         "post" => $postManager->findOneById($id),
-                        // "topic" => $topicManager->findOneById($id)
+                        
                     ]
             ];
 
@@ -111,6 +114,8 @@
 
             $postManager->delete($id);
 
+            $msg = "Your post has been deleted";
+            Session::addFlash('error', $msg);
             $this->redirectTo('forum');
         }
 
