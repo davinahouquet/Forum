@@ -13,10 +13,6 @@
     --hover:rgb(0, 218, 226);
 }
 
-input{
-    border-radius: 3px;
-}
-
 /*---------- LAYOUT ----------*/
 nav{
     display: flex;
@@ -65,13 +61,14 @@ h1{
     background: -webkit-linear-gradient(var(--clearblue), var(--darkblue));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-align: center;
 }
 
 .welcome{
     text-align: center;
 }
 
-.login-home{
+.connexion{
     max-width: 100%;
     display: flex;
     flex-direction: column;
@@ -93,15 +90,20 @@ h1{
     transition: 0.5s;
 }
 
+.h2-home{
+    margin: 25px;
+}
 /*---------- LIST POSTS ----------*/
 .a-post:hover{
     color: var(--darkfont);
 }
 
 .posts-container{
+    display: flex;
+    flex-direction: column;
     background-color: rgb(215, 215, 226);
-    margin:5px;
     transition: 0.5s;
+    padding: 15px;
 }
 
 
@@ -120,4 +122,12 @@ h1{
     width: 500px;
     padding: 20px;
     margin: 5px;
+}
+
+/* CATEGORIES */
+.categories{
+    background-color: rgb(214, 231, 236);
+    padding:15px;
+    margin: 25px;
+    box-shadow: 4px 4px 4px grey;
 }

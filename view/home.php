@@ -7,7 +7,7 @@
         
         <h1>WELCOME!</h1>
 
-        <div class="login-home">
+        <div class="connexion">
 
             <?php
 
@@ -37,7 +37,7 @@
                 ?>
     </div>
 
-<h2>Our lasts topics :</h2>
+<h2 class="h2-home">Our lasts topics :</h2>
 
 <div class="topics-container">
 <?php

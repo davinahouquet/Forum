@@ -1,7 +1,7 @@
 <?php
 
 ?>
-
+<div class="connexion">
     <h1>Registration</h1>
 
     <form enctype=mutlitpart/form-data action="index.php?ctrl=security&action=registration" method="post">
@@ -23,3 +23,4 @@
     </form>
 
     <p>Already have an account ? <a href="index.php?ctrl=security&action=login">Log in</a> !</p>
+</div>
