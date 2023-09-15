@@ -126,6 +126,8 @@
         public function deleteTopic($id){
 
             $topicManager = new TopicManager();
+
+            $topicManager->deleteTopic($id);
             $topicManager->delete($id);
 
             $msg = "Topic deleted !";

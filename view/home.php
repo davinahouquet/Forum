@@ -1,8 +1,7 @@
 <?php
     $topics = $result['data']['topics'];
-    // $user = $result['data']['user'];   
 ?>
-    <h1>WELCOME !</h1>
+    <h1>WELCOME!</h1>
 
 <?php
 
@@ -19,8 +18,6 @@
                     <input type="password" name="password" required>
                 
                     <input type="submit" name="submitLogin">
-                    <p>pour co admin : <b>test10@hotmail.fr</b> mdp <b>test10</b></p>
-                    <p>pour co avec topics + posts : <b>test4@hotmail.fr</b>mdp : <b>test4</b></p><br>
                 </form>
             
                 <p>

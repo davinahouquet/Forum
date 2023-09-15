@@ -76,4 +76,12 @@
             DAO::update($sql, ['id'=>$id]);
         }
         
+        public function deleteTopic($id){
+
+            parent::connect();
+
+            $sql = "DELETE FROM post WHERE topic_id = :id";
+
+            DAO::delete($sql, ['id'=>$id]);
+        }
     }
