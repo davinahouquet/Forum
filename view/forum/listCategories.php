@@ -11,36 +11,52 @@ $categories = $result["data"]['categories']; //récupère les données envoyées
             ?>
     <div class="categories">
             <p><b><a href="index.php?ctrl=topic&action=listTopicsByCategory&id=<?= $category->getId() ?>"><?=$category->getCategoryName()?></a></b></p>
-            <p>Nb posts</p>
+            <!-- <p>Nb posts</p> -->
 
-    </div>
-
-    <?php
+            
+            <?php
 
 if(App\Session::isAdmin()){
-?>
+    ?>
 
-    <button style="background :rgb(203, 8, 40)"><a href="index.php?ctrl=category&action=deleteCategory&id=<?= $category->getId() ?>">X</a></button>
-
-<?php
+    <button style="background :rgb(203, 8, 40)"><a href="index.php?ctrl=category&action=deleteCategory&id=<?= $category->getId() ?>">Delete X</a></button>
+    
+    <?php
 }
-    }
-        if(App\Session::isAdmin()){
-?>
-        <button style="background :rgb(113, 213, 232)">+ADD CATEGORY</button>
+}
+if(App\Session::isAdmin()){
+    ?>
+    <!-- </div> -->
+    <div class="category-form-container">
+            <button id="showCategoryFormButton">+ADD CATEGORY</button>
+            <br><p>(Only admins can add categories ☺)</p>
 
-        <p>Only admins can add categories ☺</p>
+            <div class="category-form" id="categoryForm" style="display: none;">
+                
+                <form enctype="multipart/data" action="index.php?ctrl=category&action=addCategory" method="post">
         
-        <form enctype="multipart/data" action="index.php?ctrl=category&action=addCategory" method="post">
+                    <label for="category">Category</label>
+                    <input type="text" name="category">
+        
+                    <input type="submit" name="submitCategory">
+        
+                </form>
+    <?php
+            }
+    ?>
+            </div>
+    </div>
 
-            <label for="category">Category</label>
-            <input type="text" name="category">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var showCategoryFormButton = document.getElementById('showCategoryFormButton');
+            var categoryForm = document.getElementById('categoryForm');
 
-            <input type="submit" name="submitCategory">
-
-        </form>
-<?php
-        }
-
-?>
-<p>(Only admins can add categories ☺)</p>
+            if (showCategoryFormButton && categoryForm) {
+                showCategoryFormButton.addEventListener('click', function () {
+                    // Afficher le formulaire en changeant le style display
+                    categoryForm.style.display = 'block';
+                });
+            }
+        });
+    </script>

@@ -40,52 +40,57 @@
 <h2 class="h2-home">Our lasts topics :</h2>
 
 <div class="topics-container">
-<?php
-foreach($topics as $topic){
-    ?>
-    <div class="topic">
-        <h2><a href="index.php?ctrl=post&action=listPostsByTopics&id=<?= $topic->getId() ?>"><?=$topic->getName()?></a></h2>
-        <p><?=$topic->getQuestion()?></p>
-        <p><?=$topic->getCreationDate()?></p>
-        
-        <?php
-    if(App\Session::isAdmin()){
-    ?>
-        <button><a href="index.php?ctrl=topic&action=deleteTopic&id=<?=  $topic->getId() ?>">Delete</a></button>
-        <?php
-        if($topic->getClosed() !== 1){
-            ?>
-            <button><a href="index.php?ctrl=topic&action=closeTopic&id=<?=  $topic->getId() ?>"  id="closeTopic">Close Topic</a></button>
-            <?php
-        } else {
-            echo "Topic closed";
-            ?>
-            <button><a href="index.php?ctrl=topic&action=openTopic&id=<?=  $topic->getId() ?>"  id="closeTopic">Open Topic</a></button>
-<?php
-        }
-   
-    } elseif(App\Session::getUser() == $topic->getUser()){
+    <?php
+    foreach($topics as $topic){
         ?>
-        <button><a href="index.php?ctrl=topic&action=updateTopic&id=<?=  $topic->getId() ?>">Update</a></button>
-        <?php
-        if($topic->getClosed() !== 1){
+        <div class="topic">
+            <h2><a href="index.php?ctrl=post&action=listPostsByTopics&id=<?= $topic->getId() ?>"><?=$topic->getName()?></a></h2>
+                <p><?=$topic->getQuestion()?></p>
+                <p><?=$topic->getCreationDate()?></p>
+            
+                <?php
+            //Si c'est un admin qui est connecté...
+            if(App\Session::isAdmin()){
             ?>
-            <button><a href="index.php?ctrl=topic&action=closeTopic&id=<?=  $topic->getId() ?>">Close Topic</a></button>
+                <button><a href="index.php?ctrl=topic&action=deleteTopic&id=<?=  $topic->getId() ?>">Delete</a></button>
+                <?php
+                if($topic->getClosed() !== 1){
+                    ?>
+                    <button><a href="index.php?ctrl=topic&action=closeTopic&id=<?=  $topic->getId() ?>"  id="closeTopic">Close Topic</a></button>
+                    <?php
+                } else {
+                    echo "Topic closed";
+                    ?>
+                    <button><a href="index.php?ctrl=topic&action=openTopic&id=<?=  $topic->getId() ?>"  id="closeTopic">Open Topic</a></button>
             <?php
-        } else {
-            echo "Topic closed";
-        }
-?>
-        <button><a href="index.php?ctrl=topic&action=deleteTopic&id=<?=  $topic->getId() ?>">Delete</a></button>
+                }
         
-        <?php
-    } else {
-        ?>
-        <button>Report this topic</button>
-    </div>
+            //Ou si c'est l'auteur du topic qui est connecté...
+            } elseif(App\Session::getUser() == $topic->getUser()){
+                ?>
+                <button><a href="index.php?ctrl=topic&action=updateTopic&id=<?=  $topic->getId() ?>">Update</a></button>
+                <?php
+                if($topic->getClosed() !== 1){
+                    ?>
+                    <button><a href="index.php?ctrl=topic&action=closeTopic&id=<?=  $topic->getId() ?>">Close Topic</a></button>
+                    <?php
+                } else {
+                    echo "Topic closed";
+                }
+            ?>
+                <button><a href="index.php?ctrl=topic&action=deleteTopic&id=<?=  $topic->getId() ?>">Delete</a></button>
+                
+                <?php
+            //Sinon...
+            } else {
+                ?>
+                <button>Report this topic</button>
+        <!-- </div> -->
 
-        <?php
-    }
-}
-?>
+            <?php
+            }
+            ?>
+            </div>
 </div>
+<?php
+    }

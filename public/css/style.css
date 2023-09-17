@@ -5,12 +5,20 @@
     font-family: "Poppins", sans-serif;
 }
 
+body {
+    background: url('bg.jpg'); /* Chemin vers votre image */
+    background-size: cover; /* Ajuste l'image pour couvrir l'ensemble du conteneur */
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+    background-position: center center; /* Centre l'image horizontalement et verticalement */
+}
+
 :root{
     --clearblue :#01C2FF;
     --darkblue : #022b38;
     --clearfont: rgb(241, 241, 241);
     --darkfont:rgb(36, 36, 36);
     --hover:rgb(0, 218, 226);
+    --bgtopics:#eaf6fa;
 }
 
 /*---------- LAYOUT ----------*/
@@ -22,16 +30,30 @@ nav{
     min-height: 80px;
     padding-left: 25px;
     padding-right: 25px;
+    background-color: #022b38;
+    box-shadow: 4px 4px 4px grey;
+    margin-bottom: 25px;
 }
 
 .nav-item{
-    color: var(--darkfont);
+    color: var(--clearfont);
+    /* color: var(--darkfont); */
     transition: 0.3s;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .nav-item:hover{
     color: var(--hover);
     transition: 0.3s;
+}
+
+#user-item{
+    color: var(--clearfont);
+}
+
+#user-item:hover{
+    color: var(--hover);
 }
 
 a{
@@ -74,10 +96,10 @@ h1{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #bcd1d8;
+    background-color: var(--bgtopics);
     padding: 20px;
-    box-shadow: 4px 4px 4px grey;
-    margin: 20px;
+    box-shadow: 4px 4px 4px rgb(216, 215, 215);
+    margin: 40px 100px 50px 100px;
     
 }
 .home-connexion{
@@ -121,13 +143,76 @@ h1{
     background-color: #c2d7dd;
     width: 500px;
     padding: 20px;
-    margin: 5px;
+    margin: 15px;
+    box-shadow: 2px 2px 4px grey;
 }
 
-/* CATEGORIES */
+/*----------- CATEGORIES -----------*/ 
+
 .categories{
     background-color: rgb(214, 231, 236);
     padding:15px;
     margin: 25px;
     box-shadow: 4px 4px 4px grey;
+    display: flex;
+    justify-content: space-between;
+}
+
+.category-form-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.category-form {
+    margin-top: 10px; /* Espacement par rapport au bouton */
+    display: none; /* Le formulaire est initialement masqué */
+}
+
+.category-form label {
+    display: block; /* Mettre les libellés sur une nouvelle ligne */
+    margin-bottom: 5px; /* Espacement entre les libellés et les champs de formulaire */
+}
+
+.category-form input[type="text"] {
+    width: 100%; /* Largeur du champ de texte à 100% du conteneur */
+    padding: 5px; /* Espacement à l'intérieur du champ de texte */
+    margin-bottom: 10px; /* Espacement entre les champs de texte */
+}
+
+/* Style du bouton de soumission */
+.category-form input[type="submit"] {
+    background-color: rgb(113, 213, 232);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Style pour les messages d'erreur, le cas échéant */
+.error-message {
+    color: red;
+}
+
+#showCategoryFormButton{
+    padding: 10px;
+    cursor: pointer;
+    background: rgb(1,177,233);
+    background: linear-gradient(180deg, rgba(1,177,233,1) 0%, rgba(1,44,57,1) 100%);
+    border: none;
+    color: var(--clearfont);
+    border-radius: 3px;
+}
+/*---------- FORM ADD -----------*/
+.form-add{
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #bcd1d8;
+    padding: 20px;
+    box-shadow: 4px 4px 4px grey;
+    margin: 20px;
+
 }

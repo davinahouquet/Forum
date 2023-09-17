@@ -14,6 +14,8 @@
 
             echo "0 topic yet";
         ?>
+        <div class="form-add">
+
             <form action="index.php?ctrl=topic&action=addTopic&id=<?= $id ?>" method="post" enctype="multipart/form-data">
 
             <label for="name">Name</label>
@@ -25,6 +27,8 @@
             <input type="submit" name="submitTopic">
             
         </form>
+
+        </div>
         <?php
         } else {
 
