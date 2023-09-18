@@ -22,7 +22,7 @@ $categories = $result["data"]['categories']; //récupère les données envoyées
             if(App\Session::isAdmin()){
                 ?>
             
-                <button style="background :rgb(203, 8, 40)"><a href="index.php?ctrl=category&action=deleteCategory&id=<?= $category->getId() ?>">Delete X</a></button>
+                <button style="background :rgb(255, 77, 77)"><a href="index.php?ctrl=category&action=deleteCategory&id=<?= $category->getId() ?>">Delete X</a></button>
             </div>
                 <?php
 
