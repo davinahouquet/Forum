@@ -24,7 +24,7 @@
                 ]
             ];
         }
-            
+
         public function forumRules(){
             
             return [

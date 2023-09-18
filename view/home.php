@@ -1,11 +1,25 @@
 <?php
     $topics = $result['data']['topics'];
+    $user = App\Session::getUser();
 
 ?>
 
     <div class="welcome">
         
         <h1>WELCOME!</h1>
+
+        <div class="ban-warning">
+
+            <?php
+            if($user && $user->getBan()){
+                echo "WARNING you are banned";
+            } else {
+                echo " ";
+            }
+            ?>
+
+        </div>
+
 
         <div class="connexion">
 
