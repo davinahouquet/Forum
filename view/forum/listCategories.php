@@ -18,21 +18,24 @@ $categories = $result["data"]['categories']; //récupère les données envoyées
                 ?>
                 </div>
                 <?php
-            } else {
-            if(App\Session::isAdmin()){
+            } elseif(App\Session::isAdmin()){
                 ?>
             
                 <button style="background :rgb(255, 77, 77)"><a href="index.php?ctrl=category&action=deleteCategory&id=<?= $category->getId() ?>">Delete X</a></button>
             </div>
                 <?php
 
+            } else {
+                ?>
+            </div>
+                <?php
             }
         ?>
             
             <?php
 
 }
-}
+// }
 if(App\Session::isAdmin()){
     ?>
     <!-- </div> -->
