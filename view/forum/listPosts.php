@@ -47,16 +47,20 @@
                 if($topic->getClosed() !== 1){
 
                         ?>              
-                                        <button>+ADD POST</button>
-                        
-                                        <form enctype="multipart/data" action="index.php?ctrl=post&action=addPost&id=<?=$id?>" method="post">
-                        
-                                                <label for="content">Content</label>
-                                                <textarea name="content" id="content"></textarea>
-                        
-                                        <input type="submit" name="submitPost">
-                        
-                                </form>
+                        <div class="form-add">
+
+                                <h3>Edit a post</h3>
+                
+                                <form enctype="multipart/data" action="index.php?ctrl=post&action=addPost&id=<?=$id?>" method="post">
+                
+                                        <label for="content">Content</label>
+                                        <textarea name="content" id="content"></textarea>
+                
+                                <input type="submit" name="submitPost">
+                
+                        </form>
+
+                        </div>
                         <?php
                 } else {
                         echo "Topic closed";

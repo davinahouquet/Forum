@@ -33,19 +33,23 @@
         } else {
 
 ?>
-        <h3><a href="index.php?ctrl=topic&action=addTopic">+ ADD TOPIC</a></h3>
 
-        <form action="index.php?ctrl=topic&action=addTopic&id=<?= $id ?>" method="post" enctype="multipart/form-data">
+<div class="form-add">
+    <h3>Add a topic</h3>
+    
+            <form action="index.php?ctrl=topic&action=addTopic&id=<?= $id ?>" method="post" enctype="multipart/form-data">
+    
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name">
+    
+                <label for="question">Question</label>
+                <textarea name="question" id="question"></textarea>
+    
+                <input type="submit" name="submitTopic">
+                
+            </form>
 
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name">
-
-            <label for="question">Question</label>
-            <textarea name="question" id="question"></textarea>
-
-            <input type="submit" name="submitTopic">
-            
-        </form>
+        </div>
 
     <?php
     }
