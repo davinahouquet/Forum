@@ -23,6 +23,7 @@
             $users =  $userManager->findAll(['registerDate', 'DESC']);
 
             return [
+                "metaDescription" => "Users List",
                 "view" => VIEW_DIR."security/listUsers.php",
                 "data" => [
                     "users" => $users
@@ -39,6 +40,7 @@
             $this->redirectTo('admin', 'listUsers');
 
             return [
+                "metaDescription" => "Users List",
                 "view" => VIEW_DIR."security/listUsers.php"
             ];
         }
@@ -52,6 +54,7 @@
             $this->redirectTo('admin', 'listUsers');
             
             return [
+                "metaDescription" => "Users List",
                 "view" => VIEW_DIR."security/listUsers.php"
             ];
         }

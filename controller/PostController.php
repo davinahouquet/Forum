@@ -24,6 +24,7 @@
 
             if($topic) {
                 return [
+                    "metaDescription" => "Posts List order by Topics",
                         "view" => VIEW_DIR."forum/listPosts.php",
                          "data" => [
                             "posts" => $postManager->postsByTopic($id),

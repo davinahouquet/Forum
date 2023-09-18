@@ -17,6 +17,7 @@
             $topicManager = new TopicManager();
 
             return [
+                "metaDescription" => "Home",
                 "view" => VIEW_DIR."home.php",
                 "data" => [
                     "topics" => $topicManager->findAll(['creationDate', 'DESC'])

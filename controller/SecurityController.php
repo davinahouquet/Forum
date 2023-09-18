@@ -59,6 +59,7 @@
                 }
             }
             return [
+                "metaDescription" => "Registration",
                     "view" => VIEW_DIR."security/registration.php", //Interaction avec la vue
             ];
         }

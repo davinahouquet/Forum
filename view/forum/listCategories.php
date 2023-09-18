@@ -13,21 +13,30 @@ $categories = $result["data"]['categories']; //récupère les données envoyées
             <p><b><a href="index.php?ctrl=topic&action=listTopicsByCategory&id=<?= $category->getId() ?>"><?=$category->getCategoryName()?></a></b></p>
             <!-- <p>Nb posts</p> -->
 
+        <?php
+            if(!isset($_SESSION['user'])){
+                ?>
+                </div>
+                <?php
+            } else {
+            if(App\Session::isAdmin()){
+                ?>
+            
+                <button style="background :rgb(203, 8, 40)"><a href="index.php?ctrl=category&action=deleteCategory&id=<?= $category->getId() ?>">Delete X</a></button>
+            </div>
+                <?php
+
+            }
+        ?>
             
             <?php
 
-if(App\Session::isAdmin()){
-    ?>
-
-    <button style="background :rgb(203, 8, 40)"><a href="index.php?ctrl=category&action=deleteCategory&id=<?= $category->getId() ?>">Delete X</a></button>
-    
-    <?php
 }
 }
 if(App\Session::isAdmin()){
     ?>
     <!-- </div> -->
-    <div class="category-form-container">
+    <!-- <div class="category-form-container"> -->
             <button id="showCategoryFormButton">+ADD CATEGORY</button>
             <br><p>(Only admins can add categories ☺)</p>
 
@@ -41,11 +50,12 @@ if(App\Session::isAdmin()){
                     <input type="submit" name="submitCategory">
         
                 </form>
+<!-- </div> -->
     <?php
             }
     ?>
-            </div>
-    </div>
+            <!-- </div> -->
+    <!-- </div> -->
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {

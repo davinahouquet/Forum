@@ -14,11 +14,11 @@
 <?php
         if($user->getBan() !== 1){
 ?>
-            <button style="background :rgb(203, 8, 40)"><a href="index.php?ctrl=admin&action=ban&id=<?= $user->getId() ?>">Ban</a></button>
+            <button style="background :rgb(255, 77, 77)"><a href="index.php?ctrl=admin&action=ban&id=<?= $user->getId() ?>">Ban</a></button>
 <?php
         } else {
 ?>
-            <button style="background :rgb(19, 131, 102)"><a href="index.php?ctrl=admin&action=deban&id=<?= $user->getId() ?>">Deban</a></button>
+            <button style="background :rgb(77, 255, 166)"><a href="index.php?ctrl=admin&action=deban&id=<?= $user->getId() ?>">Deban</a></button>
 <?php
         }
     }
