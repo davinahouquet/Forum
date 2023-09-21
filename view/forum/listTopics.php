@@ -31,8 +31,8 @@
         </div>
         <?php
         } else {
-
-?>
+            ?>
+            </div>
 
 <div class="form-add">
     <h3>Add a topic</h3>
